@@ -17,13 +17,22 @@
 
 
 var Callbacks = (function() {
-
+var authParam = $('meta[name=csrf-param]').attr('content');
+var authToken = $('meta[name=csrf-token]').attr('content');
   var createSite = function(url, data) {
       // Make .ajax request here
+    $.ajax({
+      type: 'POST',
+      url: url,
+      data: data
+    });
   };
+
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
+
+   
   };
 
   var postSuccessHandler = function(response) {
@@ -38,7 +47,7 @@ var Callbacks = (function() {
 
   var onSubmitSiteClickHandler =  function() {
       var site = $('#siteInput').val();
-      
+      Callbacks.createSite();
       // We have the site, now call create site
       // to make the request
   };
