@@ -12,7 +12,7 @@ describe("Ajax LinkChecker suite", function() {
         var d = $.Deferred();
         d.resolve(req);
         return d.promise();
-      });;
+      });
 
 
       Callbacks.createSite(url, data);
