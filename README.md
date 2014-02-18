@@ -20,7 +20,7 @@ In this lab, you will modify a simple link checking app to use ajax. The basic f
 ## Hints
 
 * To add newly created sites to the page, first find the table element using $('#siteTable'), then use ```.append("<h1>Some HTML</h1>")```
-* Pay attention to the alert dialog.  Do what it says.
+* Make your changes in application.js
 
 
 ## Bonus
