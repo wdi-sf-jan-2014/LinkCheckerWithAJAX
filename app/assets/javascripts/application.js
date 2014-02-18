@@ -19,26 +19,35 @@
 var Callbacks = (function() {
 
   var createSite = function(url, data) {
-       // Make .ajax request here
+       $.ajax({type: "POST", url: url, data: data }).done(postSuccessHandler).fail( postFailureHandler );
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
-    // Actually add the url and response code to the table
+    $('#siteTable tbody').append("<tr> <td><a href="+ url +">"+ url +"</a></td> <td>"+ httpResponse +"</td> </tr>")
   };
 
   var postSuccessHandler = function(response) {
       // Call addNewUrlToTable and insert the results
-      addNewUrlToTable('','');
+      Callbacks.addNewUrlToTable(response.url,response.http_response);
 
   };
 
   var postFailureHandler  = function(jqXHR) {
+      alert("EPIC FAIL!")
       // The request failed.
   };
 
   var onSubmitSiteClickHandler =  function() {
       var site = $('#siteInput').val();
-      
+
+      var authParam = $('meta[name=csrf-param]').attr('content');
+      var authToken = $('meta[name=csrf-token]').attr('content');
+
+      var data = {}
+      data[authParam] = authToken
+      data.site = {url: site}
+
+      Callbacks.createSite("/sites.json", data)
       // We have the site, now call create site
       // to make the request
   };
