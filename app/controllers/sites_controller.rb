@@ -23,6 +23,7 @@ class SitesController < ApplicationController
     respond_to do |f|
       f.html { redirect_to site_path(@site) }
       f.json { render :json => @site }
+     
     end
   end
 
