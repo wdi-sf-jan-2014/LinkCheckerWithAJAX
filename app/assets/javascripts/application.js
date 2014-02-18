@@ -80,8 +80,66 @@ var Callbacks = (function() {
       //   data
       // ).done(function( response ) {
       //     alert( "Data Saved: " + JSON.stringify(response) );
-      //  });
+    };
 
+  var destroySite = function(url, data) {
+       // Make .ajax request here
+      //   $.ajax({
+      //     type: "POST",
+      //     url: url,
+      //     data: data }).done(function( response ) ));
+      // };
+    $.ajax({ type: "post", url: url, data: data });
+
+  };
+
+
+    var removeUrlToTable = function() {
+      var site = $('#siteInput').val();
+      // To get the auth token on a page, use:
+      var authParam = $('meta[name=csrf-param]').attr('content');
+      var authToken = $('meta[name=csrf-token]').attr('content');
+ 
+      // To make a request that passes the auth token, do the following:
+      var data = {};
+      data[authParam] = authToken;
+
+      // Callbacks with CreateSite
+      $("#siteTable").empty("<td><a href="+ url + ">" + url + "</a></td><td>" + httpResponse + "</td></tr>");
+
+
+// $( "button" ).click(function() {
+//   $( "p" ).empty();
+// });
+
+          // $('a.delete').click (function(){
+          //     if(confirm("Are you sure?")){
+          //         var row = $(this).closest("tr").get(0);
+          //         $.post(this.href, {_method:'delete'}, null, "script");
+          //         $(row).hide();
+          //         return false;
+          //     } else {
+          //         //they clicked no.
+          //         return false;
+          //     }
+
+
+  // def destroy
+  //   @site = Site.find(params[:id])
+  //   @site.destroy
+
+  //   respond_to do |f|
+  //     f.html { redirect_to sites_path }
+  //     f.json { render :json => {}, status: 200}
+  //   end
+
+// $.ajax({
+//   url: your_url,
+//   type: 'DELETE',
+//   success: function(result) {
+//     // Do something with the result
+//   }
+// });
 
 
 
@@ -89,6 +147,10 @@ var Callbacks = (function() {
 
 
   };
+
+
+
+
   return {
     postSuccessHandler : postSuccessHandler,
 

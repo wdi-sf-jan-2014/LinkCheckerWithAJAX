@@ -10,6 +10,8 @@
   <tr>
   	<td><%= link_to site.url, site.url %></td>
   	<td><%= site.http_response %></td>
+    <td><%= link_to 'Destroy', site_path(site),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 
