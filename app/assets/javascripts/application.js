@@ -13,22 +13,36 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require_tree 
+
 
 
 var Callbacks = (function() {
 
   var createSite = function(url, data) {
-       // Make .ajax request here
+    var authParam = $('meta[name=csrf-param]').attr('content');
+    var authToken = $('meta[name=csrf-token]').attr('content');
+      
+    data[authParam] = authToken;
+
+   $.ajax({type: "POST",
+          url: url,
+          data: data}).done(postSuccessHandler);
+ 
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
+    $('#siteTable').append("<h1>"+url+" "+httpResponse+"</h1>");
+    // newCell.appendChild(newText);
   };
 
   var postSuccessHandler = function(response) {
+
       // Call addNewUrlToTable and insert the results
-      addNewUrlToTable('','');
+      Callbacks.addNewUrlToTable(
+        response.url, response.http_response
+      );
 
   };
 
@@ -38,10 +52,13 @@ var Callbacks = (function() {
 
   var onSubmitSiteClickHandler =  function() {
       var site = $('#siteInput').val();
-      
-      // We have the site, now call create site
-      // to make the request
-  };
+      var data = {}; 
+      data.site = {url: site};
+      var url = "/sites.json";
+
+      Callbacks.createSite(url, data);
+
+  }; 
   return {
     postSuccessHandler : postSuccessHandler,
 
@@ -49,6 +66,7 @@ var Callbacks = (function() {
     postFailureHandler : postFailureHandler,
 
     onSubmitSiteClickHandler : onSubmitSiteClickHandler,
+
     createSite : createSite,
 
     addNewUrlToTable : addNewUrlToTable
