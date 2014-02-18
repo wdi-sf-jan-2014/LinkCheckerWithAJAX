@@ -19,7 +19,7 @@ var Callbacks = (function() {
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
-    htmlStr = "<tr><td><a href=\"" + url + "\">" + url + "</td>"
+    var htmlStr = "<tr><td><a href=\"" + url + "\">" + url + "</td>";
     htmlStr += "<td>" + httpResponse + "</td></tr>";
 
     $('#siteTable').append(htmlStr);
@@ -39,8 +39,8 @@ var Callbacks = (function() {
   var createSite = function(url, data) {
     // Make .ajax request here
 
-    var authParam = $('meta[name=csrf-param]').attr('content');
-    var authToken = $('meta[name=csrf-token]').attr('content');
+    var authParam = $("meta[name=csrf-param]").attr("content");
+    var authToken = $("meta[name=csrf-token]").attr("content");
 
     // Adding the auth params and auth token to the data
     data[authParam] = authToken;
@@ -48,16 +48,16 @@ var Callbacks = (function() {
     $.ajax({
       type: "post",
       url: url,
-      data: data}).then(postSuccessHandler, postFailureHandler)
+      data: data}).then(postSuccessHandler, postFailureHandler);
   };
 
   var onSubmitSiteClickHandler =  function() {
-      var site = $('#siteInput').val();
+      var site = $("#siteInput").val();
       
       // We have the site, now call create site
       // to make the request
 
-      data = {site: {url: site}}
+      var data = {site: {url: site}};
       Callbacks.createSite("/sites.json", data);
   };
   return {
@@ -70,7 +70,7 @@ var Callbacks = (function() {
     createSite : createSite,
 
     addNewUrlToTable : addNewUrlToTable
-  };  
+  };
 })();
 
 $(window).load(function() {
@@ -78,6 +78,6 @@ $(window).load(function() {
 
   // Adding the onSubmitSiteClickHandler to kick off the ajax
   // request      
-  $('#checkSite').click(Callbacks.onSubmitSiteClickHandler);
+  $("#checkSite").click(Callbacks.onSubmitSiteClickHandler);
 
 });
