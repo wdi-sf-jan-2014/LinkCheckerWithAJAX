@@ -13,22 +13,32 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require handlebars.runtime
 //= require_tree .
+//= require_tree ./templates
 
 
 var Callbacks = (function() {
 
   var createSite = function(url, data) {
-       // Make .ajax request here
+    var authParam = $('meta[name=csrf-param]').attr('content');
+    var authToken = $('meta[name=csrf-token]').attr('content');
+    data[authParam] = authToken;
+    $.ajax({type: "post", url: url, data: data}).then(postSuccessHandler,postFailureHandler);
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
-    // Actually add the url and response code to the table
+    var source = "<tr><td><a href={{url}}>{{url}}</a></td><td>{{httpResponse}}</td></tr>";
+    var context = {url: url, httpResponse: httpResponse};
+    var template = Handlebars.compile(source);
+    $("#siteTable").append(template(context));
   };
 
   var postSuccessHandler = function(response) {
       // Call addNewUrlToTable and insert the results
-      addNewUrlToTable('','');
+      // var data = JSON.parse(response);
+
+      Callbacks.addNewUrlToTable(response.url, response.http_response);
 
   };
 
@@ -37,10 +47,13 @@ var Callbacks = (function() {
   };
 
   var onSubmitSiteClickHandler =  function() {
-      var site = $('#siteInput').val();
-      
-      // We have the site, now call create site
-      // to make the request
+      //.val(); gets the value from the #siteInput input field
+      var userUrl = $('#siteInput').val();
+      var data = {site: {url: userUrl}};
+
+      Callbacks.createSite("/sites.json", data);
+
+      $('#siteInput').trigger('reset');
   };
   return {
     postSuccessHandler : postSuccessHandler,
@@ -52,14 +65,14 @@ var Callbacks = (function() {
     createSite : createSite,
 
     addNewUrlToTable : addNewUrlToTable
-  };  
+  };
 })();
 
 $(window).load(function() {
   $("<label>New Site</label><br /><input type=\"text\" id=\"siteInput\"></input><button id=\"checkSite\">Check Site</button>").insertBefore("#siteTable");
 
   // Adding the onSubmitSiteClickHandler to kick off the ajax
-  // request      
+  // request
   $('#checkSite').click(Callbacks.onSubmitSiteClickHandler);
 
 });
