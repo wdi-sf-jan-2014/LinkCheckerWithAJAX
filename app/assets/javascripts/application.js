@@ -19,8 +19,9 @@
 var Callbacks = (function() {
 
   var createSite = function(url, data) {
-    // Make .ajax request here
-
+    var authParam = $('meta[name=csrf-param]').attr('content');
+    var authToken = $('meta[name=csrf-token]').attr('content');
+    data[authParam] = authToken;
     $.ajax({type: "post", url: url, data: data}).then(postSuccessHandler,postFailureHandler);
   };
 
@@ -43,17 +44,13 @@ var Callbacks = (function() {
   };
 
   var onSubmitSiteClickHandler =  function() {
-      var authParam = $('meta[name=csrf-param]').attr('content');
-      var authToken = $('meta[name=csrf-token]').attr('content');
-      var site = $('#siteInput').val();
-      var data = {};
-      data.site = {};
-      data[authParam] = authToken;
-      data.site.url = site;
+      //.val(); gets the value from the #siteInput input field
+      var userUrl = $('#siteInput').val();
+      var data = {site: {url: userUrl}};
 
-      // We have the site, now call create site
-      // to make the request
       Callbacks.createSite("/sites.json", data);
+
+      $('#siteInput').trigger('reset');
   };
   return {
     postSuccessHandler : postSuccessHandler,
