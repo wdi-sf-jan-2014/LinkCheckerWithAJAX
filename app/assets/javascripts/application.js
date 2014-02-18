@@ -20,44 +20,79 @@ var Callbacks = (function() {
 
   var createSite = function(url, data) {
        // Make .ajax request here
+      //   $.ajax({
+      //     type: "POST",
+      //     url: url,
+      //     data: data }).done(function( response ) ));
+      // };
+    $.ajax({ type: "post", url: url, data: data });
 
-      $.ajax({type: "post", url: url, data: data}).then(postSuccessHandler, postFailureHandler);
-
-      //$.post(url, data);
-      //   .done(function(response) {
-      //     //alert("Data Saved: " + JSON.stringify(response));
-      //   })
-      //   .fail(function(jqXHR) {
-      //     //alert( "Data was not saved!");
-      //   });
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
-    $('#siteTable').append("<tr><td><a href=" + url + ">" + url + "</a></td><td>" + httpResponse + "</td></tr>");
+    // $('#siteTable')
+    // .append("<h1>Some HTML</h1>")
+        // $('#siteTable');
+    // $.append(url, httpResponse);
+    // To add newly created sites to the page, first find the table 
+    // element using $('#siteTable'), then use .append("<h1>Some HTML</h1>")
+    // Pay attention to the alert dialog. Do what it says.
+    // $("#siteTable").append($({url: url, httpResponse: httpResponse})
+    // <tr><td><a href="amazon.com">amazon.com</a></td><td>301</td></tr>      
+      $("#siteTable").append("<td><a href="+ url + ">" + url + "</a></td><td>" + httpResponse + "</td></tr>");
   };
 
   var postSuccessHandler = function(response) {
       // Call addNewUrlToTable and insert the results
+      // f.json { render :json => @sites, only: [:id, :url, :http_response] }
       Callbacks.addNewUrlToTable(response.url, response.http_response);
+
   };
 
   var postFailureHandler  = function(jqXHR) {
       // The request failed.
-      alert("site add failed.");
   };
 
   var onSubmitSiteClickHandler =  function() {
+      var site = $('#siteInput').val();
+      // To get the auth token on a page, use:
       var authParam = $('meta[name=csrf-param]').attr('content');
       var authToken = $('meta[name=csrf-token]').attr('content');
-      var site = $('#siteInput').val();
-      
+ 
+      // To make a request that passes the auth token, do the following:
       var data = {};
-      data.site = {};
       data[authParam] = authToken;
-      data.site.url = site;
 
-      Callbacks.createSite("/sites.json", data);
+      // Callbacks with CreateSite
+      Callbacks.createSite(site,data);
+
+
+      // Add the function "foo" to the list
+      // callbacks.add( site );
+      // We have the site, now call create site
+      // to make the request
+            //       $.post(url,
+      // data
+      // ).done(function( response )
+
+      // $.post( user,
+      //   data
+      // ).done(function( response ) {
+      //     alert( "Data Saved: " + JSON.stringify(response) );
+      //  });
+
+  var onSubmitSiteClickHandler =  function() {
+      var site = $('#siteInput').val();
+      var authParam = $('meta[name=csrf-param]').attr('content');
+      var authToken = $('meta[name=csrf-token]').attr('content');
+      var data = {};
+      data[authParam] = authToken;
+      // We have the site, now call create site
+      // to make the request
+      Callbacks.createSite(site,data);
+      
+  };
   };
   return {
     postSuccessHandler : postSuccessHandler,
