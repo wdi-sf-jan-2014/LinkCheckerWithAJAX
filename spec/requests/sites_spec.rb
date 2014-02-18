@@ -15,6 +15,7 @@ describe "Sites" do
 		it 'adds after a format json post' do
 			post '/sites.json', data
 			response.status.should == 200
+
 			site = Site.where(:url => data[:site][:url]).first
 			site.should_not be_nil
 			JSON.parse(response.body)["id"].should == site.id
@@ -32,13 +33,13 @@ describe "Sites" do
 		before do
 			@site = Site.create!(:url => "no-links-here.com", http_response: 200)
 		end
-
 		it 'returns a json array of urls' do
 			get "/sites.json"
 			response.should be_success
 
 			jsonResp = JSON.parse(response.body)
 			expect jsonResp.length > 0
+
 			JSON.parse(response.body)[0].should include "url" => @site.url
 		end
 	end
