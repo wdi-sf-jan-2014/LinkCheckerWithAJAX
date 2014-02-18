@@ -6,6 +6,8 @@ gem 'rails', '4.0.2'
 # Use postgres as the database for Active Record
 gem 'pg'
 
+gem 'handlebars_assets'
+
 gem 'typhoeus'
 
 gem 'unicorn'
