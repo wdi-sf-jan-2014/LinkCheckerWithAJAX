@@ -1,15 +1,4 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
-// about supported directives.
-//
+
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
@@ -19,31 +8,46 @@
 var Callbacks = (function() {
 
   var createSite = function(url, data) {
-       // Make .ajax request here
+      $.ajax({
+        type: "post",
+        url: url,
+        data: data
+      }).then(Callbacks.postSuccessHandler);
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
+    $('#siteTable').append('<tr>url</tr><tr>httpResponse</tr>');
+  };
+
+  var postSuccessHandler = function(response) {
+      var = response.url;
+      var = response.httpResponse;
+      addNewUrlToTable('url','httpResponse');
+
+  };
+
+  var postFailureHandler = function(jqXHR) {
+    return jqXHR.status;
+  };
+
+  var onSubmitSiteClickHandler =  function() {
+    var authParam = $('meta[name=csrf-param]').attr('content');
+    var authToken = $('meta[name=csrf-token]').attr('content');
+    var site = $('#siteInput').val();
+    var site_data = {site: {url: site}};
+        Callbacks.createSite('/sites', site_data);
+      };
+    });
   };
   return {
-    postSuccessHandler : function(response) {
-      // Call addNewUrlToTable and insert the results
-      addNewUrlToTable('','');
+    postSuccessHandler : postSuccessHandler,
 
-    },
+    postFailureHandler : postFailureHandler,
 
-    postFailureHandler : function(jqXHR) {
-      // The request failed.
-    },
-
-    onSubmitSiteClickHandler : function() {
-      var site = $('#siteInput').val();
-      
-      // We have the site, now call create site
-      // to make the request
-    },
+    onSubmitSiteClickHandler : onSubmitSiteClickHandler,
     createSite : createSite,
-    
+
     addNewUrlToTable : addNewUrlToTable
   };  
 })();
