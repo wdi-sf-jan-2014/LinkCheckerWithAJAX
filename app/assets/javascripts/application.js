@@ -14,40 +14,58 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-
 var Callbacks = (function() {
 
   var createSite = function(url, data) {
-       // Make .ajax request here
+    var authParam = $('meta[name=csrf-param]').attr('content');
+    var authToken = $('meta[name=csrf-token]').attr('content');
+    data[authParam] = authToken;
+    $.ajax({
+      type: "post",
+      url: url,
+      data: data
+    }).done(postSuccessHandler);
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
-    // Actually add the url and response code to the table
+    $('#siteTable').append("<td><a href=>" + url + "</a></td>");
+    $('#siteTable').append("<td>" + httpResponse + "</td><br>");
+  };
+
+
+  var postSuccessHandler = function(response) {
+    // response from the post 
+    // Call addNewUrlToTable and insert the results
+  
+    Callbacks.addNewUrlToTable(response.url, response.http_response);
+
+  };
+
+  var postFailureHandler  = function(jqXHR) {
+      // The request failed.
+  };
+//  what do you want to do ON submit
+  var onSubmitSiteClickHandler =  function() {
+    var site = $('#siteInput').val();
+    var data = {};
+    data.site = {url:site};
+    url = "/sites.json";
+    Callbacks.createSite(site, data);
+      
+      
   };
   return {
-    postSuccessHandler : function(response) {
-      // Call addNewUrlToTable and insert the results
-      addNewUrlToTable('','');
+    postSuccessHandler : postSuccessHandler,
 
-    },
 
-    postFailureHandler : function(jqXHR) {
-      // The request failed.
-    },
+    postFailureHandler : postFailureHandler,
 
-    onSubmitSiteClickHandler : function() {
-      var site = $('#siteInput').val();
-      
-      // We have the site, now call create site
-      // to make the request
-    },
+    onSubmitSiteClickHandler : onSubmitSiteClickHandler,
     createSite : createSite,
-    
-    addNewUrlToTable : addNewUrlToTable
-  };  
-})();
 
+    addNewUrlToTable : addNewUrlToTable
+  };
+})();
 $(window).load(function() {
   $("<label>New Site</label><br /><input type=\"text\" id=\"siteInput\"></input><button id=\"checkSite\">Check Site</button>").insertBefore("#siteTable");
 

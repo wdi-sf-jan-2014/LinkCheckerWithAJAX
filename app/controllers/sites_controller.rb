@@ -11,7 +11,7 @@ class SitesController < ApplicationController
     end
   end
 
-  def create
+  def create 
     url = params.require(:site)[:url]
     @site = Site.new(url: url)
 
