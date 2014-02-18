@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require handlebars.runtime
+//= require_tree ./templates
 //= require turbolinks
 //= require_tree .
 
@@ -28,8 +30,7 @@ var Callbacks = (function() {
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
-    var source = "<tr><td><a href={{u}}>{{u}}</a></td><td>{{hr}}</td></tr>";
-    var template = Handlebars.compile(source);
+    var template = HandlebarsTemplates.site;
 
     $("#siteTable").append(template({u: url, hr: httpResponse}));
   };
