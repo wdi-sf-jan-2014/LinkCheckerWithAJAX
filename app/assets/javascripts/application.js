@@ -16,34 +16,50 @@
 //= require_tree .
 
 
+
 var Callbacks = (function() {
 
   var createSite = function(url, data) {
-       // Make .ajax request here
-  };
+    var authParam = $('meta[name=csrf-param]').attr('content');
+    var authToken = $('meta[name=csrf-token]').attr('content');
+    
+    data[authParam] = authToken;
+
+    $.ajax({ type: "post", url: url, data: data }).then(postSuccessHandler, postFailureHandler);
+ };
 
   var addNewUrlToTable = function(url, httpResponse) {
+    $('#siteTable').append("<tr><td>" + url + "</a></td><td>" + httpResponse + "</td></tr>");
     // Actually add the url and response code to the table
   };
-  return {
-    postSuccessHandler : function(response) {
+
+  var postSuccessHandler = function(response) {
+    alert("success" + response.url);
       // Call addNewUrlToTable and insert the results
-      addNewUrlToTable('','');
+      Callbacks.addNewUrlToTable(response.url, response.httpResponse);
 
-    },
+  };
 
-    postFailureHandler : function(jqXHR) {
+  var postFailureHandler  = function(jqXHR) {
+    alert("failure" + jqXHR);
       // The request failed.
-    },
+  };
 
-    onSubmitSiteClickHandler : function() {
-      var site = $('#siteInput').val();
-      
-      // We have the site, now call create site
-      // to make the request
-    },
+  var onSubmitSiteClickHandler =  function() {
+      var urlFromUser = $('#siteInput').val();
+      data = {site: { url: urlFromUser } };
+
+      Callbacks.createSite('/sites.json', data);
+  };
+  return {
+    postSuccessHandler : postSuccessHandler,
+
+
+    postFailureHandler : postFailureHandler,
+
+    onSubmitSiteClickHandler : onSubmitSiteClickHandler,
     createSite : createSite,
-    
+
     addNewUrlToTable : addNewUrlToTable
   };  
 })();
