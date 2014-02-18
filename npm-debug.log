@@ -1,0 +1,341 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'handlebars@1.3', '-g' ]
+2 info using npm@1.3.24
+3 info using node@v0.10.25
+4 verbose cache add [ 'handlebars@1.3', null ]
+5 verbose cache add name=undefined spec="handlebars@1.3" args=["handlebars@1.3",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'handlebars@1.3',
+6 verbose parsed url   path: 'handlebars@1.3',
+6 verbose parsed url   href: 'handlebars@1.3' }
+7 verbose cache add name="handlebars" spec="1.3" args=["handlebars","1.3"]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: '1.3',
+8 verbose parsed url   path: '1.3',
+8 verbose parsed url   href: '1.3' }
+9 verbose addNamed [ 'handlebars', '1.3' ]
+10 verbose addNamed [ null, '>=1.3.0-0 <1.4.0-0' ]
+11 silly lockFile fb2afea6-handlebars-1-3 handlebars@1.3
+12 verbose lock handlebars@1.3 /Users/JSchulhof/.npm/fb2afea6-handlebars-1-3.lock
+13 silly addNameRange { name: 'handlebars',
+13 silly addNameRange   range: '>=1.3.0-0 <1.4.0-0',
+13 silly addNameRange   hasData: false }
+14 verbose url raw handlebars
+15 verbose url resolving [ 'https://registry.npmjs.org/', './handlebars' ]
+16 verbose url resolved https://registry.npmjs.org/handlebars
+17 info trying registry request attempt 1 at 11:24:57
+18 http GET https://registry.npmjs.org/handlebars
+19 http 200 https://registry.npmjs.org/handlebars
+20 silly registry.get cb [ 200,
+20 silly registry.get   { date: 'Tue, 18 Feb 2014 19:24:58 GMT',
+20 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+20 silly registry.get     etag: '"EC7M2OZ60C001XLRTIW7SHP75"',
+20 silly registry.get     'content-type': 'application/json',
+20 silly registry.get     via: '1.1 varnish',
+20 silly registry.get     'cache-control': 'max-age=1',
+20 silly registry.get     'content-length': '43300',
+20 silly registry.get     'accept-ranges': 'bytes',
+20 silly registry.get     age: '157',
+20 silly registry.get     'x-served-by': 'cache-v36-ASH, cache-sv62-SJC3',
+20 silly registry.get     'x-cache': 'HIT, HIT',
+20 silly registry.get     'x-cache-hits': '1, 1',
+20 silly registry.get     'x-timer': 'S1392740894.540916920,VS0,VS38,VE39,VE10604078',
+20 silly registry.get     vary: 'Accept',
+20 silly registry.get     'keep-alive': 'timeout=10, max=50',
+20 silly registry.get     connection: 'Keep-Alive' } ]
+21 silly addNameRange number 2 { name: 'handlebars',
+21 silly addNameRange   range: '>=1.3.0-0 <1.4.0-0',
+21 silly addNameRange   hasData: true }
+22 silly addNameRange versions [ 'handlebars',
+22 silly addNameRange   [ '1.0.6',
+22 silly addNameRange     '1.0.6-2',
+22 silly addNameRange     '1.0.7',
+22 silly addNameRange     '1.0.8',
+22 silly addNameRange     '1.0.9',
+22 silly addNameRange     '1.0.10',
+22 silly addNameRange     '1.0.11',
+22 silly addNameRange     '1.0.12',
+22 silly addNameRange     '1.1.0',
+22 silly addNameRange     '1.1.1',
+22 silly addNameRange     '1.1.2',
+22 silly addNameRange     '1.2.0',
+22 silly addNameRange     '1.2.1',
+22 silly addNameRange     '1.3.0',
+22 silly addNameRange     '2.0.0-alpha.1',
+22 silly addNameRange     '1.0.2-beta',
+22 silly addNameRange     '1.0.4-beta',
+22 silly addNameRange     '1.0.5-beta' ] ]
+23 verbose addNamed [ 'handlebars', '1.3.0' ]
+24 verbose addNamed [ '1.3.0', '1.3.0' ]
+25 silly lockFile 15405714-handlebars-1-3-0 handlebars@1.3.0
+26 verbose lock handlebars@1.3.0 /Users/JSchulhof/.npm/15405714-handlebars-1-3-0.lock
+27 silly lockFile 3cbc4fe2--handlebars-handlebars-1-3-0-tgz https://registry.npmjs.org/handlebars/-/handlebars-1.3.0.tgz
+28 verbose lock https://registry.npmjs.org/handlebars/-/handlebars-1.3.0.tgz /Users/JSchulhof/.npm/3cbc4fe2--handlebars-handlebars-1-3-0-tgz.lock
+29 verbose addRemoteTarball [ 'https://registry.npmjs.org/handlebars/-/handlebars-1.3.0.tgz',
+29 verbose addRemoteTarball   '9e9b130a93e389491322d975cf3ec1818c37ce34' ]
+30 info retry fetch attempt 1 at 11:24:58
+31 verbose fetch to= /var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/tmp.tgz
+32 http GET https://registry.npmjs.org/handlebars/-/handlebars-1.3.0.tgz
+33 http 200 https://registry.npmjs.org/handlebars/-/handlebars-1.3.0.tgz
+34 verbose tar unpack /var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/tmp.tgz
+35 silly lockFile 5ee4a4af-98778-0-9045310134533793-package tar:///var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/package
+36 verbose lock tar:///var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/package /Users/JSchulhof/.npm/5ee4a4af-98778-0-9045310134533793-package.lock
+37 silly lockFile b2ff4ed4-98778-0-9045310134533793-tmp-tgz tar:///var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/tmp.tgz
+38 verbose lock tar:///var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/tmp.tgz /Users/JSchulhof/.npm/b2ff4ed4-98778-0-9045310134533793-tmp-tgz.lock
+39 silly gunzTarPerm modes [ '755', '644' ]
+40 silly gunzTarPerm extractEntry package.json
+41 silly gunzTarPerm extractEntry .npmignore
+42 silly gunzTarPerm extractEntry LICENSE
+43 silly gunzTarPerm extractEntry runtime.js
+44 silly gunzTarPerm extractEntry README.markdown
+45 silly gunzTarPerm extractEntry bin/handlebars
+46 silly gunzTarPerm extractEntry dist/handlebars.amd.js
+47 silly gunzTarPerm extractEntry dist/handlebars.amd.min.js
+48 silly gunzTarPerm extractEntry dist/handlebars.js
+49 silly gunzTarPerm extractEntry dist/handlebars.min.js
+50 silly gunzTarPerm extractEntry dist/handlebars.runtime.amd.js
+51 silly gunzTarPerm extractEntry dist/handlebars.runtime.amd.min.js
+52 silly gunzTarPerm extractEntry dist/handlebars.runtime.js
+53 silly gunzTarPerm extractEntry dist/handlebars.runtime.min.js
+54 silly gunzTarPerm extractEntry dist/amd/handlebars.js
+55 silly gunzTarPerm extractEntry dist/amd/handlebars.runtime.js
+56 silly gunzTarPerm extractEntry dist/amd/handlebars/base.js
+57 silly gunzTarPerm extractEntry dist/amd/handlebars/exception.js
+58 silly gunzTarPerm extractEntry dist/amd/handlebars/runtime.js
+59 silly gunzTarPerm extractEntry dist/amd/handlebars/safe-string.js
+60 silly gunzTarPerm extractEntry dist/amd/handlebars/utils.js
+61 silly gunzTarPerm extractEntry dist/amd/handlebars/compiler/ast.js
+62 silly gunzTarPerm extractEntry dist/amd/handlebars/compiler/base.js
+63 silly gunzTarPerm extractEntry dist/amd/handlebars/compiler/compiler.js
+64 silly gunzTarPerm extractEntry dist/amd/handlebars/compiler/javascript-compiler.js
+65 silly gunzTarPerm extractEntry dist/amd/handlebars/compiler/parser.js
+66 silly gunzTarPerm extractEntry dist/amd/handlebars/compiler/printer.js
+67 silly gunzTarPerm extractEntry dist/amd/handlebars/compiler/visitor.js
+68 silly gunzTarPerm extractEntry dist/cjs/handlebars.js
+69 silly gunzTarPerm extractEntry dist/cjs/handlebars.runtime.js
+70 silly gunzTarPerm extractEntry dist/cjs/handlebars/base.js
+71 silly gunzTarPerm extractEntry dist/cjs/handlebars/exception.js
+72 silly gunzTarPerm extractEntry dist/cjs/handlebars/runtime.js
+73 silly gunzTarPerm extractEntry dist/cjs/handlebars/safe-string.js
+74 silly gunzTarPerm extractEntry dist/cjs/handlebars/utils.js
+75 silly gunzTarPerm extractEntry dist/cjs/handlebars/compiler/ast.js
+76 silly gunzTarPerm extractEntry dist/cjs/handlebars/compiler/base.js
+77 silly gunzTarPerm extractEntry dist/cjs/handlebars/compiler/compiler.js
+78 silly gunzTarPerm extractEntry dist/cjs/handlebars/compiler/javascript-compiler.js
+79 silly gunzTarPerm extractEntry dist/cjs/handlebars/compiler/parser.js
+80 silly gunzTarPerm extractEntry dist/cjs/handlebars/compiler/printer.js
+81 silly gunzTarPerm extractEntry dist/cjs/handlebars/compiler/visitor.js
+82 silly gunzTarPerm extractEntry lib/handlebars.js
+83 silly gunzTarPerm extractEntry lib/handlebars.runtime.js
+84 silly gunzTarPerm extractEntry lib/index.js
+85 silly gunzTarPerm extractEntry lib/handlebars/base.js
+86 silly gunzTarPerm extractEntry lib/handlebars/exception.js
+87 silly gunzTarPerm extractEntry lib/handlebars/runtime.js
+88 silly gunzTarPerm extractEntry lib/handlebars/safe-string.js
+89 silly gunzTarPerm extractEntry lib/handlebars/utils.js
+90 silly gunzTarPerm extractEntry lib/handlebars/compiler/ast.js
+91 silly gunzTarPerm extractEntry lib/handlebars/compiler/base.js
+92 silly gunzTarPerm extractEntry lib/handlebars/compiler/compiler.js
+93 silly gunzTarPerm extractEntry lib/handlebars/compiler/javascript-compiler.js
+94 silly gunzTarPerm extractEntry lib/handlebars/compiler/parser.js
+95 silly gunzTarPerm extractEntry lib/handlebars/compiler/printer.js
+96 silly gunzTarPerm extractEntry lib/handlebars/compiler/visitor.js
+97 silly gunzTarPerm extractEntry release-notes.md
+98 silly lockFile 5ee4a4af-98778-0-9045310134533793-package tar:///var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/package
+99 silly lockFile 5ee4a4af-98778-0-9045310134533793-package tar:///var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/package
+100 silly lockFile b2ff4ed4-98778-0-9045310134533793-tmp-tgz tar:///var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/tmp.tgz
+101 silly lockFile b2ff4ed4-98778-0-9045310134533793-tmp-tgz tar:///var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/tmp.tgz
+102 verbose tar pack [ '/Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz',
+102 verbose tar pack   '/var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/package' ]
+103 verbose tarball /Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz
+104 verbose folder /var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/package
+105 silly lockFile 5ee4a4af-98778-0-9045310134533793-package tar:///var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/package
+106 verbose lock tar:///var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/package /Users/JSchulhof/.npm/5ee4a4af-98778-0-9045310134533793-package.lock
+107 silly lockFile bf243b84-npm-handlebars-1-3-0-package-tgz tar:///Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz
+108 verbose lock tar:///Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz /Users/JSchulhof/.npm/bf243b84-npm-handlebars-1-3-0-package-tgz.lock
+109 silly lockFile 5ee4a4af-98778-0-9045310134533793-package tar:///var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/package
+110 silly lockFile 5ee4a4af-98778-0-9045310134533793-package tar:///var/folders/73/d_sq_mgj6018mxyqrl0kvh0h0000gn/T/npm-60987-Qpzqk2Wu/1392751498778-0.9045310134533793/package
+111 silly lockFile bf243b84-npm-handlebars-1-3-0-package-tgz tar:///Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz
+112 silly lockFile bf243b84-npm-handlebars-1-3-0-package-tgz tar:///Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz
+113 silly lockFile c0def401-hof-npm-handlebars-1-3-0-package /Users/JSchulhof/.npm/handlebars/1.3.0/package
+114 verbose lock /Users/JSchulhof/.npm/handlebars/1.3.0/package /Users/JSchulhof/.npm/c0def401-hof-npm-handlebars-1-3-0-package.lock
+115 silly lockFile c0def401-hof-npm-handlebars-1-3-0-package /Users/JSchulhof/.npm/handlebars/1.3.0/package
+116 silly lockFile c0def401-hof-npm-handlebars-1-3-0-package /Users/JSchulhof/.npm/handlebars/1.3.0/package
+117 verbose tar unpack /Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz
+118 silly lockFile dd090332-hof-npm-handlebars-1-3-0-package tar:///Users/JSchulhof/.npm/handlebars/1.3.0/package
+119 verbose lock tar:///Users/JSchulhof/.npm/handlebars/1.3.0/package /Users/JSchulhof/.npm/dd090332-hof-npm-handlebars-1-3-0-package.lock
+120 silly lockFile bf243b84-npm-handlebars-1-3-0-package-tgz tar:///Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz
+121 verbose lock tar:///Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz /Users/JSchulhof/.npm/bf243b84-npm-handlebars-1-3-0-package-tgz.lock
+122 silly gunzTarPerm modes [ '755', '644' ]
+123 silly gunzTarPerm extractEntry package.json
+124 silly gunzTarPerm extractEntry .npmignore
+125 silly gunzTarPerm extractEntry LICENSE
+126 silly gunzTarPerm extractEntry runtime.js
+127 silly gunzTarPerm extractEntry README.markdown
+128 silly gunzTarPerm extractEntry bin/handlebars
+129 silly gunzTarPerm extractEntry dist/handlebars.amd.js
+130 silly gunzTarPerm extractEntry dist/handlebars.amd.min.js
+131 silly gunzTarPerm extractEntry dist/handlebars.js
+132 silly gunzTarPerm extractEntry dist/handlebars.min.js
+133 silly gunzTarPerm extractEntry dist/handlebars.runtime.amd.js
+134 silly gunzTarPerm extractEntry dist/handlebars.runtime.amd.min.js
+135 silly gunzTarPerm extractEntry dist/handlebars.runtime.js
+136 silly gunzTarPerm extractEntry dist/handlebars.runtime.min.js
+137 silly gunzTarPerm extractEntry dist/amd/handlebars.js
+138 silly gunzTarPerm extractEntry dist/amd/handlebars.runtime.js
+139 silly gunzTarPerm extractEntry dist/amd/handlebars/base.js
+140 silly gunzTarPerm extractEntry dist/amd/handlebars/exception.js
+141 silly gunzTarPerm extractEntry dist/amd/handlebars/runtime.js
+142 silly gunzTarPerm extractEntry dist/amd/handlebars/safe-string.js
+143 silly gunzTarPerm extractEntry dist/amd/handlebars/utils.js
+144 silly gunzTarPerm extractEntry dist/amd/handlebars/compiler/ast.js
+145 silly gunzTarPerm extractEntry dist/amd/handlebars/compiler/base.js
+146 silly gunzTarPerm extractEntry dist/amd/handlebars/compiler/compiler.js
+147 silly gunzTarPerm extractEntry dist/amd/handlebars/compiler/javascript-compiler.js
+148 silly gunzTarPerm extractEntry dist/amd/handlebars/compiler/parser.js
+149 silly gunzTarPerm extractEntry dist/amd/handlebars/compiler/printer.js
+150 silly gunzTarPerm extractEntry dist/amd/handlebars/compiler/visitor.js
+151 silly gunzTarPerm extractEntry dist/cjs/handlebars.js
+152 silly gunzTarPerm extractEntry dist/cjs/handlebars.runtime.js
+153 silly gunzTarPerm extractEntry dist/cjs/handlebars/base.js
+154 silly gunzTarPerm extractEntry dist/cjs/handlebars/exception.js
+155 silly gunzTarPerm extractEntry dist/cjs/handlebars/runtime.js
+156 silly gunzTarPerm extractEntry dist/cjs/handlebars/safe-string.js
+157 silly gunzTarPerm extractEntry dist/cjs/handlebars/utils.js
+158 silly gunzTarPerm extractEntry dist/cjs/handlebars/compiler/ast.js
+159 silly gunzTarPerm extractEntry dist/cjs/handlebars/compiler/base.js
+160 silly gunzTarPerm extractEntry dist/cjs/handlebars/compiler/compiler.js
+161 silly gunzTarPerm extractEntry dist/cjs/handlebars/compiler/javascript-compiler.js
+162 silly gunzTarPerm extractEntry dist/cjs/handlebars/compiler/parser.js
+163 silly gunzTarPerm extractEntry dist/cjs/handlebars/compiler/printer.js
+164 silly gunzTarPerm extractEntry dist/cjs/handlebars/compiler/visitor.js
+165 silly gunzTarPerm extractEntry lib/handlebars.js
+166 silly gunzTarPerm extractEntry lib/handlebars.runtime.js
+167 silly gunzTarPerm extractEntry lib/index.js
+168 silly gunzTarPerm extractEntry lib/handlebars/base.js
+169 silly gunzTarPerm extractEntry lib/handlebars/exception.js
+170 silly gunzTarPerm extractEntry lib/handlebars/runtime.js
+171 silly gunzTarPerm extractEntry lib/handlebars/safe-string.js
+172 silly gunzTarPerm extractEntry lib/handlebars/utils.js
+173 silly gunzTarPerm extractEntry lib/handlebars/compiler/ast.js
+174 silly gunzTarPerm extractEntry lib/handlebars/compiler/base.js
+175 silly gunzTarPerm extractEntry lib/handlebars/compiler/compiler.js
+176 silly gunzTarPerm extractEntry lib/handlebars/compiler/javascript-compiler.js
+177 silly gunzTarPerm extractEntry lib/handlebars/compiler/parser.js
+178 silly gunzTarPerm extractEntry lib/handlebars/compiler/printer.js
+179 silly gunzTarPerm extractEntry lib/handlebars/compiler/visitor.js
+180 silly gunzTarPerm extractEntry release-notes.md
+181 silly lockFile dd090332-hof-npm-handlebars-1-3-0-package tar:///Users/JSchulhof/.npm/handlebars/1.3.0/package
+182 silly lockFile dd090332-hof-npm-handlebars-1-3-0-package tar:///Users/JSchulhof/.npm/handlebars/1.3.0/package
+183 silly lockFile bf243b84-npm-handlebars-1-3-0-package-tgz tar:///Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz
+184 silly lockFile bf243b84-npm-handlebars-1-3-0-package-tgz tar:///Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz
+185 verbose chmod /Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz 644
+186 verbose chown /Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz [ 501, 20 ]
+187 silly lockFile 3cbc4fe2--handlebars-handlebars-1-3-0-tgz https://registry.npmjs.org/handlebars/-/handlebars-1.3.0.tgz
+188 silly lockFile 3cbc4fe2--handlebars-handlebars-1-3-0-tgz https://registry.npmjs.org/handlebars/-/handlebars-1.3.0.tgz
+189 silly lockFile 15405714-handlebars-1-3-0 handlebars@1.3.0
+190 silly lockFile 15405714-handlebars-1-3-0 handlebars@1.3.0
+191 silly lockFile fb2afea6-handlebars-1-3 handlebars@1.3
+192 silly lockFile fb2afea6-handlebars-1-3 handlebars@1.3
+193 silly resolved [ { name: 'handlebars',
+193 silly resolved     barename: 'handlebars',
+193 silly resolved     version: '1.3.0',
+193 silly resolved     description: 'Handlebars provides the power necessary to let you build semantic templates effectively with no frustration',
+193 silly resolved     homepage: 'http://www.handlebarsjs.com/',
+193 silly resolved     keywords: [ 'handlebars', 'mustache', 'template', 'html' ],
+193 silly resolved     repository:
+193 silly resolved      { type: 'git',
+193 silly resolved        url: 'https://github.com/wycats/handlebars.js.git' },
+193 silly resolved     author: { name: 'Yehuda Katz' },
+193 silly resolved     license: 'MIT',
+193 silly resolved     readmeFilename: 'README.markdown',
+193 silly resolved     engines: { node: '>=0.4.7' },
+193 silly resolved     dependencies: { optimist: '~0.3', 'uglify-js': '~2.3' },
+193 silly resolved     optionalDependencies: { 'uglify-js': '~2.3' },
+193 silly resolved     devDependencies:
+193 silly resolved      { async: '~0.2.9',
+193 silly resolved        'aws-sdk': '~1.5.0',
+193 silly resolved        benchmark: '~1.0',
+193 silly resolved        'dustjs-linkedin': '~2.0.2',
+193 silly resolved        eco: '~1.1.0-rc-3',
+193 silly resolved        grunt: '~0.4.1',
+193 silly resolved        'grunt-cli': '~0.1.10',
+193 silly resolved        'grunt-contrib-clean': '~0.4.1',
+193 silly resolved        'grunt-contrib-concat': '~0.3.0',
+193 silly resolved        'grunt-contrib-connect': '~0.5.0',
+193 silly resolved        'grunt-contrib-copy': '~0.4.1',
+193 silly resolved        'grunt-contrib-jshint': '0.x',
+193 silly resolved        'grunt-contrib-requirejs': '~0.4.1',
+193 silly resolved        'grunt-contrib-uglify': '~0.2.2',
+193 silly resolved        'grunt-contrib-watch': '~0.5.3',
+193 silly resolved        'grunt-saucelabs': '~4.1.2',
+193 silly resolved        'es6-module-packager': '0.x',
+193 silly resolved        jison: '~0.3.0',
+193 silly resolved        'keen.io': '0.0.3',
+193 silly resolved        mocha: '*',
+193 silly resolved        mustache: '~0.7.2',
+193 silly resolved        semver: '~2.1.0',
+193 silly resolved        underscore: '~1.5.1' },
+193 silly resolved     main: 'lib/index.js',
+193 silly resolved     bin: { handlebars: 'bin/handlebars' },
+193 silly resolved     scripts: { test: 'grunt' },
+193 silly resolved     readme: '[![Travis Build Status](https://travis-ci.org/wycats/handlebars.js.png?branch=master)](https://travis-ci.org/wycats/handlebars.js)\n[![Selenium Test Status](https://saucelabs.com/buildstatus/handlebars)](https://saucelabs.com/u/handlebars)\n\nHandlebars.js\n=============\n\nHandlebars.js is an extension to the [Mustache templating\nlanguage](http://mustache.github.com/) created by Chris Wanstrath.\nHandlebars.js and Mustache are both logicless templating languages that\nkeep the view and the code separated like we all know they should be.\n\nCheckout the official Handlebars docs site at\n[http://www.handlebarsjs.com](http://www.handlebarsjs.com).\n\nInstalling\n----------\nInstalling Handlebars is easy. Simply download the package [from the official site](http://handlebarsjs.com/) or the [bower repository][bower-repo] and add it to your web pages (you should usually use the most recent version).\n\nAlternatively, if you prefer having the latest version of handlebars from\nthe \'master\' branch, passing builds of the \'master\' branch are automatically\npublished to S3. You may download the latest passing master build by grabbing\na `handlebars-latest.js` file from the [builds page][builds-page]. When the\nbuild is published, it is also available as a `handlebars-gitSHA.js` file on\nthe builds page if you need a version to refer to others.\n`handlebars-runtime.js` builds are also available.\n\n**Note**: The S3 builds page is provided as a convenience for the community,\nbut you should not use it for hosting Handlebars in production.\n\nUsage\n-----\nIn general, the syntax of Handlebars.js templates is a superset\nof Mustache templates. For basic syntax, check out the [Mustache\nmanpage](http://mustache.github.com/mustache.5.html).\n\nOnce you have a template, use the `Handlebars.compile` method to compile\nthe template into a function. The generated function takes a context\nargument, which will be used to render the template.\n\n```js\nvar source = "<p>Hello, my name is {{name}}. I am from {{hometown}}. I have " +\n             "{{kids.length}} kids:</p>" +\n             "<ul>{{#kids}}<li>{{name}} is {{age}}</li>{{/kids}}</ul>";\nvar template = Handlebars.compile(source);\n\nvar data = { "name": "Alan", "hometown": "Somewhere, TX",\n             "kids": [{"name": "Jimmy", "age": "12"}, {"name": "Sally", "age": "4"}]};\nvar result = template(data);\n\n// Would render:\n// <p>Hello, my name is Alan. I am from Somewhere, TX. I have 2 kids:</p>\n// <ul>\n//   <li>Jimmy is 12</li>\n//   <li>Sally is 4</li>\n// </ul>\n```\n\n\nRegistering Helpers\n-------------------\n\nYou can register helpers that Handlebars will use when evaluating your\ntemplate. Here\'s an example, which assumes that your objects have a URL\nembedded in them, as well as the text for a link:\n\n```js\nHandlebars.registerHelper(\'link_to\', function() {\n  return "<a href=\'" + this.url + "\'>" + this.body + "</a>";\n});\n\nvar context = { posts: [{url: "/hello-world", body: "Hello World!"}] };\nvar source = "<ul>{{#posts}}<li>{{{link_to}}}</li>{{/posts}}</ul>"\n\nvar template = Handlebars.compile(source);\ntemplate(context);\n\n// Would render:\n//\n// <ul>\n//   <li><a href=\'/hello-world\'>Hello World!</a></li>\n// </ul>\n```\n\nHelpers take precedence over fields defined on the context. To access a field\nthat is masked by a helper, a path reference may be used. In the example above\na field named `link_to` on the `context` object would be referenced using:\n\n```\n{{./link_to}}\n```\n\nEscaping\n--------\n\nBy default, the `{{expression}}` syntax will escape its contents. This\nhelps to protect you against accidental XSS problems caused by malicious\ndata passed from the server as JSON.\n\nTo explicitly *not* escape the contents, use the triple-mustache\n(`{{{}}}`). You have seen this used in the above example.\n\n\nDifferences Between Handlebars.js and Mustache\n----------------------------------------------\nHandlebars.js adds a couple of additional features to make writing\ntemplates easier and also changes a tiny detail of how partials work.\n\n### Paths\n\nHandlebars.js supports an extended expression syntax that we call paths.\nPaths are made up of typical expressions and . characters. Expressions\nallow you to not only display data from the current context, but to\ndisplay data from contexts that are descendants and ancestors of the\ncurrent context.\n\nTo display data from descendant contexts, use the `.` character. So, for\nexample, if your data were structured like:\n\n```js\nvar data = {"person": { "name": "Alan" }, "company": {"name": "Rad, Inc." } };\n```\n\nYou could display the person\'s name from the top-level context with the\nfollowing expression:\n\n```\n{{person.name}}\n```\n\nYou can backtrack using `../`. For example, if you\'ve already traversed\ninto the person object you could still display the company\'s name with\nan expression like `{{../company.name}}`, so:\n\n```\n{{#person}}{{name}} - {{../company.name}}{{/person}}\n```\n\nwould render:\n\n```\nAlan - Rad, Inc.\n```\n\n### Strings\n\nWhen calling a helper, you can pass paths or Strings as parameters. For\ninstance:\n\n```js\nHandlebars.registerHelper(\'link_to\', function(title, options) {\n  return "<a href=\'/posts" + this.url + "\'>" + title + "!</a>"\n});\n\nvar context = { posts: [{url: "/hello-world", body: "Hello World!"}] };\nvar source = \'<ul>{{#posts}}<li>{{{link_to "Post"}}}</li>{{/posts}}</ul>\'\n\nvar template = Handlebars.compile(source);\ntemplate(context);\n\n// Would render:\n//\n// <ul>\n//   <li><a href=\'/posts/hello-world\'>Post!</a></li>\n// </ul>\n```\n\nWhen you pass a String as a parameter to a helper, the literal String\ngets passed to the helper function.\n\n\n### Block Helpers\n\nHandlebars.js also adds the ability to define block helpers. Block\nhelpers are functions that can be called from anywhere in the template.\nHere\'s an example:\n\n```js\nvar source = "<ul>{{#people}}<li>{{#link}}{{name}}{{/link}}</li>{{/people}}</ul>";\nHandlebars.registerHelper(\'link\', function(options) {\n  return \'<a href="/people/\' + this.id + \'">\' + options.fn(this) + \'</a>\';\n});\nvar template = Handlebars.compile(source);\n\nvar data = { "people": [\n    { "name": "Alan", "id": 1 },\n    { "name": "Yehuda", "id": 2 }\n  ]};\ntemplate(data);\n\n// Should render:\n// <ul>\n//   <li><a href="/people/1">Alan</a></li>\n//   <li><a href="/people/2">Yehuda</a></li>\n// </ul>\n```\n\nWhenever the block helper is called it is given one or more parameters,\nany arguments that are passed in the helper in the call and an `options`\nobject containing the `fn` function which executes the block\'s child.\nThe block\'s current context may be accessed through `this`.\n\nBlock helpers have the same syntax as mustache sections but should not be\nconfused with one another. Sections are akin to an implicit `each` or\n`with` statement depending on the input data and helpers are explicit\npieces of code that are free to implement whatever behavior they like.\nThe [mustache spec](http://mustache.github.io/mustache.5.html)\ndefines the exact behavior of sections. In the case of name conflicts,\nhelpers are given priority.\n\n### Partials\n\nYou can register additional templates as partials, which will be used by\nHandlebars when it encounters a partial (`{{> partialName}}`). Partials\ncan either be String templates or compiled template functions. Here\'s an\nexample:\n\n```js\nvar source = "<ul>{{#people}}<li>{{> link}}</li>{{/people}}</ul>";\n\nHandlebars.registerPartial(\'link\', \'<a href="/people/{{id}}">{{name}}</a>\')\nvar template = Handlebars.compile(source);\n\nvar data = { "people": [\n    { "name": "Alan", "id": 1 },\n    { "name": "Yehuda", "id": 2 }\n  ]};\n\ntemplate(data);\n\n// Should render:\n// <ul>\n//   <li><a href="/people/1">Alan</a></li>\n//   <li><a href="/people/2">Yehuda</a></li>\n// </ul>\n```\n\n### Comments\n\nYou can add comments to your templates with the following syntax:\n\n```js\n{{! This is a comment }}\n```\n\nYou can also use real html comments if you want them to end up in the output.\n\n```html\n<div>\n    {{! This comment will not end up in the output }}\n    <!-- This comment will show up in the output -->\n</div>\n```\n\n\nPrecompiling Templates\n----------------------\n\nHandlebars allows templates to be precompiled and included as javascript\ncode rather than the handlebars template allowing for faster startup time.\n\n### Installation\nThe precompiler script may be installed via npm using the `npm install -g handlebars`\ncommand.\n\n### Usage\n\n<pre>\nPrecompile handlebar templates.\nUsage: handlebars template...\n\nOptions:\n  -a, --amd            Create an AMD format function (allows loading with RequireJS)          [boolean]\n  -f, --output         Output File                                                            [string]\n  -k, --known          Known helpers                                                          [string]\n  -o, --knownOnly      Known helpers only                                                     [boolean]\n  -m, --min            Minimize output                                                        [boolean]\n  -s, --simple         Output template function only.                                         [boolean]\n  -r, --root           Template root. Base value that will be stripped from template names.   [string]\n  -c, --commonjs       Exports CommonJS style, path to Handlebars module                      [string]\n  -h, --handlebarPath  Path to handlebar.js (only valid for amd-style)                        [string]\n  -n, --namespace      Template namespace                                                     [string]\n  -p, --partial        Compiling a partial template                                           [boolean]\n  -d, --data           Include data when compiling                                            [boolean]\n  -e, --extension      Template extension.                                                    [string]\n  -b, --bom            Removes the BOM (Byte Order Mark) from the beginning of the templates. [boolean]\n</pre>\n\nIf using the precompiler\'s normal mode, the resulting templates will be\nstored to the `Handlebars.templates` object using the relative template\nname sans the extension. These templates may be executed in the same\nmanner as templates.\n\nIf using the simple mode the precompiler will generate a single\njavascript method. To execute this method it must be passed to the using\nthe `Handlebars.template` method and the resulting object may be as\nnormal.\n\n### Optimizations\n\n- Rather than using the full _handlebars.js_ library, implementations that\n  do not need to compile templates at runtime may include _handlebars.runtime.js_\n  whose min+gzip size is approximately 1k.\n- If a helper is known to exist in the target environment they may be defined\n  using the `--known name` argument may be used to optimize accesses to these\n  helpers for size and speed.\n- When all helpers are known in advance the `--knownOnly` argument may be used\n  to optimize all block helper references.\n- Implementations that do not use `@data` variables can improve performance of\n  iteration centric templates by specifying `{data: false}` in the compiler options.\n\nSupported Environments\n----------------------\n\nHandlebars has been designed to work in any ECMAScript 3 environment. This includes\n\n- Node.js\n- Chrome\n- Firefox\n- Safari 5+\n- Opera 11+\n- IE 6+\n\nOlder versions and other runtimes are likely to work but have not been formally\ntested.\n\n[![Selenium Test Status](https://saucelabs.com/browser-matrix/handlebars.svg)](https://saucelabs.com/u/handlebars)\n\nPerformance\n-----------\n\nIn a rough performance test, precompiled Handlebars.js templates (in\nthe original version of Handlebars.js) rendered in about half the\ntime of Mustache templates. It would be a shame if it were any other\nway, since they were precompiled, but the difference in architecture\ndoes have some big performance advantages. Justin Marney, a.k.a.\n[gotascii](http://github.com/gotascii), confirmed that with an\n[independent test](http://sorescode.com/2010/09/12/benchmarks.html). The\nrewritten Handlebars (current version) is faster than the old version,\nand we will have some benchmarks in the near future.\n\n\nBuilding\n--------\n\nTo build handlebars, just run `grunt build`, and the build will output to the `dist` directory.\n\n\nUpgrading\n---------\n\nSee [release-notes.md](https://github.com/wycats/handlebars.js/blob/master/release-notes.md) for upgrade notes.\n\nKnown Issues\n------------\n* Handlebars.js can be cryptic when there\'s an error while rendering.\n* Using a variable, helper, or partial named `class` causes errors in IE browsers. (Instead, use `className`)\n\nHandlebars in the Wild\n----------------------\n\n* [Assemble](http://assemble.io), by [@jonschlinkert](https://github.com/jonschlinkert)\n  and [@doowb](https://github.com/doowb), is a static site generator that uses Handlebars.js\n  as its template engine.\n* [CoSchedule](http://coschedule.com) An editorial calendar for WordPress that uses Handlebars.js\n* [Ember.js](http://www.emberjs.com) makes Handlebars.js the primary way to\n  structure your views, also with automatic data binding support.\n* [Ghost](https://ghost.org/) Just a blogging platform.\n* [handlebars_assets](http://github.com/leshill/handlebars_assets): A Rails Asset Pipeline gem\n  from Les Hill (@leshill).\n* [handlebars-helpers](https://github.com/assemble/handlebars-helpers) is an extensive library\n  with 100+ handlebars helpers.\n* [hbs](http://github.com/donpark/hbs): An Express.js view engine adapter for Handlebars.js,\n  from Don Park.\n* [jblotus](http://github.com/jblotus) created [http://tryhandlebarsjs.com](http://tryhandlebarsjs.com)\n  for anyone who would like to try out Handlebars.js in their browser.\n* [jQuery plugin](http://71104.github.io/jquery-handlebars/): allows you to use\n  Handlebars.js with [jQuery](http://jquery.com/).\n* [Lumbar](http://walmartlabs.github.io/lumbar) provides easy module-based template management for\n  handlebars projects.\n* [sammy.js](http://github.com/quirkey/sammy) by Aaron Quint, a.k.a. quirkey,\n  supports Handlebars.js as one of its template plugins.\n* [SproutCore](http://www.sproutcore.com) uses Handlebars.js as its main\n  templating engine, extending it with automatic data binding support.\n* [YUI](http://yuilibrary.com/yui/docs/handlebars/) implements a port of handlebars\n* [Swag](https://github.com/elving/swag) by [@elving](https://github.com/elving) is a growing collection of helpers for handlebars.js. Give your handlebars.js templates some swag son!\n* [DOMBars](https://github.com/blakeembrey/dombars) is a DOM-based templating engine built on the Handlebars parser and runtime\n\nExternal Resources\n------------------\n\n* [Gist about Synchronous and asynchronous loading of external handlebars templates](https://gist.github.com/2287070)\n\nHave a project using Handlebars? Send us a [pull request][pull-request]!\n\nHelping Out\n-----------\n\nTo build Handlebars.js you\'ll need a few things installed.\n\n* Node.js\n* [Grunt](http://gruntjs.com/getting-started)\n\nProject dependencies may be installed via `npm install`.\n\nTo build Handlebars.js from scratch, you\'ll want to run `grunt`\nin the root of the project. That will build Handlebars and output the\nresults to the dist/ folder. To re-run tests, run `grunt test` or `npm test`.\nYou can also run our set of benchmarks with `grunt bench`.\n\nThe `grunt dev` implements watching for tests and allows for in browser testing at `http://localhost:9999/spec/`.\n\nIf you notice any problems, please report them to the GitHub issue tracker at\n[http://github.com/wycats/handlebars.js/issues](http://github.com/wycats/handlebars.js/issues).\nFeel free to contact commondream or wycats through GitHub with any other\nquestions or feature requests. To submit changes fork the project and\nsend a pull request.\n\n### Ember testing\n\nThe current ember distribution should be tested as part of the handlebars release process. This requires building the `handlebars-source` gem locally and then executing the ember test script.\n\n```sh\ngrunt build release\nexport HANDLEBARS_PATH=`pwd`\n\ncd $emberRepoDir\nbundle exec rake clean\nbundle exec rake test\n```\n\n### Releasing\n\nHandlebars utilizes the [release yeoman generator][generator-release] to perform most release tasks.\n\nA full release may be completed with the following:\n\n```\nyo release:notes patch\nyo release:release patch\nnpm publish\nyo release:publish cdnjs handlebars.js dist/cdnjs/\nyo release:publish components handlebars.js dist/components/\n\ncd dist/components/\ngem build handlebars-source.gemspec\ngem push handlebars-source-*.gem\n```\n\nAfter this point the handlebars site needs to be updated to point to the new version numbers.\n\nLicense\n-------\nHandlebars.js is released under the MIT license.\n\n[bower-repo]: https://github.com/components/handlebars.js\n[builds-page]: http://builds.handlebarsjs.com.s3.amazonaws.com/bucket-listing.html?sort=lastmod&sortdir=desc\n[generator-release]: https://github.com/walmartlabs/generator-release\n[pull-request]: https://github.com/wycats/handlebars.js/pull/new/master\n',
+193 silly resolved     bugs: { url: 'https://github.com/wycats/handlebars.js/issues' },
+193 silly resolved     _id: 'handlebars@1.3.0',
+193 silly resolved     dist: { shasum: '9e9b130a93e389491322d975cf3ec1818c37ce34' },
+193 silly resolved     _from: 'handlebars@1.3',
+193 silly resolved     _resolved: 'https://registry.npmjs.org/handlebars/-/handlebars-1.3.0.tgz' } ]
+194 info install handlebars@1.3.0 into /usr/local/lib
+195 info installOne handlebars@1.3.0
+196 info /usr/local/lib/node_modules/handlebars unbuild
+197 verbose tar unpack /Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz
+198 silly lockFile 483b433f-ocal-lib-node-modules-handlebars tar:///usr/local/lib/node_modules/handlebars
+199 verbose lock tar:///usr/local/lib/node_modules/handlebars /Users/JSchulhof/.npm/483b433f-ocal-lib-node-modules-handlebars.lock
+200 silly lockFile bf243b84-npm-handlebars-1-3-0-package-tgz tar:///Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz
+201 verbose lock tar:///Users/JSchulhof/.npm/handlebars/1.3.0/package.tgz /Users/JSchulhof/.npm/bf243b84-npm-handlebars-1-3-0-package-tgz.lock
+202 silly gunzTarPerm modes [ '755', '644' ]
+203 error Error: EACCES, mkdir '/usr/local/lib/node_modules/handlebars'
+203 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/handlebars']
+203 error   errno: 3,
+203 error   code: 'EACCES',
+203 error   path: '/usr/local/lib/node_modules/handlebars',
+203 error   fstream_type: 'Directory',
+203 error   fstream_path: '/usr/local/lib/node_modules/handlebars',
+203 error   fstream_class: 'DirWriter',
+203 error   fstream_stack:
+203 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+203 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53',
+203 error      'Object.oncomplete (fs.js:107:15)' ] }
+204 error Please try running this command again as root/Administrator.
+205 error System Darwin 13.0.0
+206 error command "node" "/usr/local/bin/npm" "install" "handlebars@1.3" "-g"
+207 error cwd /Users/JSchulhof/GA/week7/LinkCheckerWithAJAX
+208 error node -v v0.10.25
+209 error npm -v 1.3.24
+210 error path /usr/local/lib/node_modules/handlebars
+211 error fstream_path /usr/local/lib/node_modules/handlebars
+212 error fstream_type Directory
+213 error fstream_class DirWriter
+214 error code EACCES
+215 error errno 3
+216 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/handlebars'
+217 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+217 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53
+217 error fstream_stack Object.oncomplete (fs.js:107:15)
+218 verbose exit [ 3, true ]
