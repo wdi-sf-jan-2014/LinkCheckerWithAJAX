@@ -19,34 +19,39 @@
 var Callbacks = (function() {
 
   var createSite = function(url, data) {
-      $.ajax({ type: 'post', url: url, data: data } )
+    var authParam = $('meta[name=csrf-param]').attr('content');
+    var authToken = $('meta[name=csrf-token]').attr('content');
+    data[authParam] = authToken;
+      $.ajax({ 
+        type: 'post', 
+        url: url, 
+        data: data } ).then(postSuccessHandler, postFailureHandler);
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
-    $.ajax({ url: url, httpResponse: httpResponse })
+    $('#siteTable').append("<tr><td><a href="+url+"></td></tr>")
   };
 
   var postSuccessHandler = function(response) {
       // Call addNewUrlToTable and insert the results
-      
       Callbacks.addNewUrlToTable(response.url, response.http_response);
 
   };
 
   var postFailureHandler  = function(jqXHR) {
+      alert("uh oh" + jqXHR);
       // The request failed.
   };
 
   var onSubmitSiteClickHandler =  function() {
       var site = $('#siteInput').val();
-      var authParam = $('meta[name=csrf-param]').attr('content');
-      var authToken = $('meta[name=csrf-token]').attr('content');
-      var data = {};
-      data[authParam] = authToken;
+      var data = {}
+      data.url = site;
+      data.site = {url: site};
       // We have the site, now call create site
       // to make the request
-      Callbacks.createSite(site,data)
+      Callbacks.createSite("/sites.json",data);
   };
   return {
     postSuccessHandler : postSuccessHandler,
