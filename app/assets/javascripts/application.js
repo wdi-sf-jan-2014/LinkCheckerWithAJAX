@@ -82,17 +82,12 @@ var Callbacks = (function() {
       //     alert( "Data Saved: " + JSON.stringify(response) );
       //  });
 
-  var onSubmitSiteClickHandler =  function() {
-      var site = $('#siteInput').val();
-      var authParam = $('meta[name=csrf-param]').attr('content');
-      var authToken = $('meta[name=csrf-token]').attr('content');
-      var data = {};
-      data[authParam] = authToken;
-      // We have the site, now call create site
-      // to make the request
-      Callbacks.createSite(site,data);
-      
-  };
+
+
+
+
+
+
   };
   return {
     postSuccessHandler : postSuccessHandler,
