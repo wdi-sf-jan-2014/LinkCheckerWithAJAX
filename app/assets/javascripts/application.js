@@ -30,7 +30,8 @@ var Callbacks = (function() {
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
     
-    $('#siteTable > tbody').append("<tr><td><a href=>" + url + "</a></td><td>" + httpResponse + "</td></tr>");
+    $('#siteTable').append("<a href=><td>" + url + "</a></td>");
+    $('#siteTable').append("<td>" + httpResponse + "</td><br>");
   };
 
   var postSuccessHandler = function(response) {

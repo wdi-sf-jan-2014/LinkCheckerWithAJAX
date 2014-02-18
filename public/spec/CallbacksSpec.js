@@ -5,14 +5,20 @@ describe("Ajax LinkChecker suite", function() {
 
   describe("Callbacks", function() {
     it("should check that perform create calls ajax", function() {
-      spyOn(jQuery, "ajax");
-
       var url = "/test";
       var data = {key : "value"};
+
+      spyOn(jQuery, "ajax").and.callFake(function (req) {
+        var d = $.Deferred();
+        d.resolve(req);
+        return d.promise();
+      });
+
+
       Callbacks.createSite(url, data);
 
       expect(jQuery.ajax).toHaveBeenCalledWith({
-        type: "POST",
+        type: "post",
         url: url,
         data: data
       });
@@ -28,10 +34,17 @@ describe("Ajax LinkChecker suite", function() {
       spyOn(Callbacks, "addNewUrlToTable");
 
       var responseData = '{"url" : "http://www.myurl.com", "http_response" : 200}';
-      Callbacks.postSuccessHandler(responseData);
+      var jsonResp = JSON.parse(responseData);
+      Callbacks.postSuccessHandler(jsonResp);
 
+<<<<<<< HEAD
       jsonResp = responseData;
       expect(Callbacks.addNewUrlToTable).toHaveBeenCalledWith(jsonResp.url, jsonResp.http_response);
+=======
+
+      expect(Callbacks.addNewUrlToTable)
+        .toHaveBeenCalledWith(jsonResp.url,jsonResp.http_response);
+>>>>>>> 4d1a2537f65387a0759c7dafca3c1014961a2440
     });
   });
 
