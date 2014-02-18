@@ -19,11 +19,12 @@
 var Callbacks = (function() {
 
   var createSite = function(url, data) {
-       // Make .ajax request here
+    $.ajax({type: "POST", url: url, data: data });
+
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
-    // Actually add the url and response code to the table
+    $('#siteTable').append("<tr><td><a href='" + url + "'>" + url + "</a></td>", "<td>" + httpResponse + "</td></tr>");
   };
 
   var postSuccessHandler = function(response) {
