@@ -54,6 +54,7 @@ end
 gem "binding_of_caller"
 
 gem "handlebars-rails", "~> 0.4.2"
+gem 'handlebars_assets'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
