@@ -17,9 +17,6 @@
 var Callbacks = (function() {
 
   var createSite = function(url, data) {
-    var authParam = $('meta[name=csrf-param]').attr('content');
-    var authToken = $('meta[name=csrf-token]').attr('content');
-    data[authParam] = authToken;
     $.ajax({
       type: "post",
       url: url,
@@ -36,9 +33,8 @@ var Callbacks = (function() {
   var postSuccessHandler = function(response) {
     // response from the post 
     // Call addNewUrlToTable and insert the results
-  
+    var jsonResp = JSON.parse(response)
     Callbacks.addNewUrlToTable(response.url, response.http_response);
-
   };
 
   var postFailureHandler  = function(jqXHR) {
@@ -46,11 +42,14 @@ var Callbacks = (function() {
   };
 //  what do you want to do ON submit
   var onSubmitSiteClickHandler =  function() {
+    var authParam = $('meta[name=csrf-param]').attr('content');
+    var authToken = $('meta[name=csrf-token]').attr('content');
     var site = $('#siteInput').val();
     var data = {};
+    data[authParam] = authToken;
     data.site = {url:site};
-    url = "/sites.json";
-    Callbacks.createSite(site, data);
+    url = "/sites";
+    Callbacks.createSite(url, data);
       
       
   };
