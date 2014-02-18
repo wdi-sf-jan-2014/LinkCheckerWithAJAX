@@ -18,7 +18,6 @@ class SitesController < ApplicationController
     response = Typhoeus.get(@site.url)
 
     @site.http_response = response.response_code
-
     @site.save
     respond_to do |f|
       f.html { redirect_to site_path(@site) }
