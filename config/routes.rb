@@ -7,3 +7,11 @@ LinkChecker::Application.routes.draw do
   get '/sites', to: 'sites#index'
 
 end
+
+#  Prefix Verb   URI Pattern          Controller#Action
+#     root GET    /                    sites#index
+# new_site GET    /sites/new(.:format) sites#new
+#    sites POST   /sites(.:format)     sites#create
+#     site GET    /sites/:id(.:format) sites#show
+#          DELETE /sites/:id(.:format) sites#destory
+#          GET    /sites(.:format)     sites#index

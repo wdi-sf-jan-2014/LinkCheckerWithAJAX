@@ -10,7 +10,7 @@ class SitesController < ApplicationController
       f.json { render :json => @sites, only: [:id, :url, :http_response] }
     end
   end
-
+ 
   def create
     url = params.require(:site)[:url]
     @site = Site.new(url: url)
