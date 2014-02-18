@@ -22,7 +22,7 @@ describe("Ajax LinkChecker suite", function() {
 
       Callbacks.onSubmitSiteClickHandler();
 
-      expect(Callbacks.createSite).toHaveBeenCalledWith();
+      expect(Callbacks.createSite).toHaveBeenCalled();
     });
     it("should check that postSuccessHandler calls the addNewURLToTable method", function() {
       spyOn(Callbacks, "addNewUrlToTable");
