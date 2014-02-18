@@ -43,7 +43,8 @@ var Callbacks = (function() {
 
   var postFailureHandler  = function(jqXHR) {
       // The request failed.
-  };
+      alert("FAIL!!!" + jqXHR.status);
+  };
 
   var onSubmitSiteClickHandler =  function() {
       var site = $('#siteInput').val();
