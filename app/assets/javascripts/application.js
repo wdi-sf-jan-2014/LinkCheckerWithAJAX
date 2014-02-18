@@ -20,17 +20,21 @@ var Callbacks = (function() {
 
   var createSite = function(url, data) {
        // Make .ajax request here
+    var authParam = $('meta[name=csrf-param]').attr('content');
+    var authToken = $('meta[name=csrf-token]').attr('content');
+    data[authParam] = authToken;
        $.ajax({
       type: "post",
       url: url,
       data: data
-    });
+    }).done(postSuccessHandler);
+
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
-    $("#siteTable tbody").append("<tr><td><a href="+url+">"+ url+ 
-      "</td><td> " + httpResponse + "</td></tr>");
+    $('#siteTable').append("<td><a href=>" + url + "</a></td>");
+    $('#siteTable').append("<td>" + httpResponse + "</td><br>");
     // Actually add the url and response code to the table
   };
 
@@ -47,14 +51,11 @@ var Callbacks = (function() {
 
   var onSubmitSiteClickHandler =  function() {
       var site = $('#siteInput').val();
-      var authParam = $('meta[name=csrf-param]').attr('content');
-      var authToken = $('meta[name=csrf-token]').attr('content');
-      data[authParam] = authToken;
       var data = {};
       data.site = {url: site};
       var url = "/sites.json";
 
-      Callbacks.createSite("/sites.json", data);
+      Callbacks.createSite(url, data);
 
      
 
