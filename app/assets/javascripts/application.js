@@ -15,25 +15,40 @@
 //= require turbolinks
 //= require_tree .
 
-
 var Callbacks = (function() {
-
-  var createSite = function(url, data) {
-       // Make .ajax request here
-  };
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
+    htmlStr = "<tr><td><a href=\"" + url + "\">" + url + "</td>"
+    htmlStr += "<td>" + httpResponse + "</td></tr>";
+
+    $('#siteTable').append(htmlStr);
   };
 
   var postSuccessHandler = function(response) {
-      // Call addNewUrlToTable and insert the results
-      addNewUrlToTable('','');
+    // Call addNewUrlToTable and insert the results
+    Callbacks.addNewUrlToTable(response.url,response.http_response);
 
   };
 
   var postFailureHandler  = function(jqXHR) {
-      // The request failed.
+    // The request failed.
+    alert("Something went wrong: " + jqXHR);
+  };
+
+  var createSite = function(url, data) {
+    // Make .ajax request here
+
+    var authParam = $('meta[name=csrf-param]').attr('content');
+    var authToken = $('meta[name=csrf-token]').attr('content');
+
+    // Adding the auth params and auth token to the data
+    data[authParam] = authToken;
+
+    $.ajax({
+      type: "post",
+      url: url,
+      data: data}).then(postSuccessHandler, postFailureHandler)
   };
 
   var onSubmitSiteClickHandler =  function() {
@@ -41,14 +56,17 @@ var Callbacks = (function() {
       
       // We have the site, now call create site
       // to make the request
+
+      data = {site: {url: site}}
+      Callbacks.createSite("/sites.json", data);
   };
   return {
     postSuccessHandler : postSuccessHandler,
 
-
     postFailureHandler : postFailureHandler,
 
     onSubmitSiteClickHandler : onSubmitSiteClickHandler,
+
     createSite : createSite,
 
     addNewUrlToTable : addNewUrlToTable
