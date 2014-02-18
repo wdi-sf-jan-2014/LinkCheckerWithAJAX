@@ -15,29 +15,59 @@
 //= require turbolinks
 //= require_tree .
 
+
+var Callbacks = (function() {
+
+  var createSite = function(url, data) {
+      var authParam = $('meta[name=csrf-param]').attr('content');
+      var authToken = $('meta[name=csrf-token]').attr('content');
+      data[authParam] = authToken;
+       $.ajax({type: 'post', url: url, data: data}).done(function(response){
+        Callbacks.postSuccessHandler(response);})
+        .fail(Callbacks.postFailureHandler);
+  };
+
+  var addNewUrlToTable = function(url, httpResponse) {
+    // Actually add the url and response code to the table
+    $('#siteTable').append('<tr><td><a href="' + url + '">' + url + '</a></td><td>' + httpResponse + '</td></tr>');
+  };
+  return {
+    postSuccessHandler : function(response) {
+      // Call addNewUrlToTable and insert the results
+
+      addNewUrlToTable(response.url, response.http_response);
+
+    },
+
+    postFailureHandler : function(jqXHR) {
+      alert('fail : ' + jqXHR);
+    },
+
+    onSubmitSiteClickHandler : function() {
+      var site = $('#siteInput').val();
+      var data = {};
+      
+      data.site = {'url' : site};
+      Callbacks.createSite('/sites.json', data);
+      // We have the site, now call create site
+      // to make the request
+    },
+    createSite : createSite,
+    
+    addNewUrlToTable : addNewUrlToTable
+  };  
+})();
+
+
+
+
 $(window).load(function() {
-  var authParam = $('meta[name=csrf-param]').attr('content');
-  var authToken = $('meta[name=csrf-token]').attr('content');
-  var text_field = $('<input id="form-text-field" ></input>' );
-  var submit = $('<input type="submit" value="Create Site"></input>');
-  var addedSiteId = 0;
-  $('#form-div').append(text_field);
-  $('#form-div').append(submit);
-  submit.click(function(self){
-    var data = {};
-    data[authParam] = authToken;
-    data.site = {'url' : $('#form-text-field').val()};
-    $.post("/sites.json", data)
-    .done(function( response ) {
-        //console.log(response);
-        //var res = JSON.parse(response);
-       console.log(response);
-        $('#siteTable').append('<tr><td><a href="' + response.url + '">' + response.url + '</a></td><td>' + response.http_response + '</td></tr>');
-      })
-     .fail(function(jqXHR) {
-        alert( "Error");
-     });
- });
-  
+  $("<label>New Site</label><br /><input type=\"text\" id=\"siteInput\"></input><button id=\"checkSite\">Check Site</button>").insertBefore("#siteTable");
+  // Adding the onSubmitSiteClickHandler to kick off the ajax
+  // request      
+  $('#checkSite').click(Callbacks.onSubmitSiteClickHandler);
 
 });
+
+
+
