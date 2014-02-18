@@ -1,10 +1,13 @@
 describe("Ajax LinkChecker suite", function() {
+  var url = ["www.example.com"], ajax = jasmine.createSpy('ajax');
+
   it("works!", function() {
     expect(true).toBe(true);
   });
 
   describe("Callbacks", function() {
     it("should check that perform create calls ajax", function() {
+     
       spyOn(jQuery, "ajax");
 
       var url = "/test";
@@ -22,7 +25,7 @@ describe("Ajax LinkChecker suite", function() {
 
       Callbacks.onSubmitSiteClickHandler();
 
-      expect(Callbacks.createSite).toHaveBeenCalledWith();
+      expect(Callbacks.createSite).toHaveBeenCalled();
     });
     it("should check that postSuccessHandler calls the addNewURLToTable method", function() {
       spyOn(Callbacks, "addNewUrlToTable");
@@ -31,10 +34,8 @@ describe("Ajax LinkChecker suite", function() {
       Callbacks.postSuccessHandler(responseData);
 
       jsonResp = JSON.parse(responseData);
-      expect(Callbacks.addNewUrlToTable).toHaveBeenCalledWith({
-        url: jsonResp.url,
-        httpResponse: jsonResp.http_response
-      });
+      expect(Callbacks.addNewUrlToTable).toHaveBeenCalledWith(jsonResp.url, jsonResp.http_response
+      );
     });
   });
 
