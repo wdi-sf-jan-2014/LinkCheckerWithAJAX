@@ -43,10 +43,10 @@ var Callbacks = (function() {
 
   var onSubmitSiteClickHandler =  function() {
       var site = $('#siteInput').val();
-      
+      // data["site"] = {url.site};
       // We have the site, now call create site
       // to make the request
-      Callbacks.createSite('http://localhost:3000',site);
+      Callbacks.createSite('http://localhost:3000/sites.json',site);
   };
   return {
     postSuccessHandler : postSuccessHandler,
