@@ -35,7 +35,7 @@ var Callbacks = (function() {
     postSuccessHandler : function(response) {
       // Call addNewUrlToTable and insert the results
 
-      addNewUrlToTable(response.url, response.http_response);
+      Callbacks.addNewUrlToTable(response.url, response.http_response);
 
     },
 
