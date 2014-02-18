@@ -39,8 +39,7 @@ var Callbacks = (function() {
   };
 
   var postFailureHandler  = function(jqXHR) {
-    // The request failed.
-    // alert ("Failure: " + jqXHR);
+    return jqXHR.status;
   };
 
   var onSubmitSiteClickHandler =  function() {
