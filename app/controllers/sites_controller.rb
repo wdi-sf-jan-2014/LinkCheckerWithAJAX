@@ -4,6 +4,7 @@ class SitesController < ApplicationController
   end
 
   def index
+    @site = Site.new
     @sites = Site.all
     respond_to do |f|
       f.html

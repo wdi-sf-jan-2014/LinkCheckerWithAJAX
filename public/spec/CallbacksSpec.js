@@ -5,14 +5,20 @@ describe("Ajax LinkChecker suite", function() {
 
   describe("Callbacks", function() {
     it("should check that perform create calls ajax", function() {
-      spyOn(jQuery, "ajax");
-
       var url = "/test";
       var data = {key : "value"};
+
+      spyOn(jQuery, "ajax").and.callFake(function (req) {
+        var d = $.Deferred();
+        d.resolve(req);
+        return d.promise();
+      });
+
+
       Callbacks.createSite(url, data);
 
       expect(jQuery.ajax).toHaveBeenCalledWith({
-        type: "POST",
+        type: "post",
         url: url,
         data: data
       });
@@ -22,19 +28,18 @@ describe("Ajax LinkChecker suite", function() {
 
       Callbacks.onSubmitSiteClickHandler();
 
-      expect(Callbacks.createSite).toHaveBeenCalledWith();
+      expect(Callbacks.createSite).toHaveBeenCalled();
     });
     it("should check that postSuccessHandler calls the addNewURLToTable method", function() {
       spyOn(Callbacks, "addNewUrlToTable");
 
       var responseData = '{"url" : "http://www.myurl.com", "http_response" : 200}';
-      Callbacks.postSuccessHandler(responseData);
+      var jsonResp = JSON.parse(responseData);
+      Callbacks.postSuccessHandler(jsonResp);
 
-      jsonResp = JSON.parse(responseData);
-      expect(Callbacks.addNewUrlToTable).toHaveBeenCalledWith({
-        url: jsonResp.url,
-        httpResponse: jsonResp.http_response
-      });
+
+      expect(Callbacks.addNewUrlToTable)
+        .toHaveBeenCalledWith(jsonResp.url,jsonResp.http_response);
     });
   });
 
