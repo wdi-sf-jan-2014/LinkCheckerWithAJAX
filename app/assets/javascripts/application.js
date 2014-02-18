@@ -11,43 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= requir e jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-
-var Callbacks = (function() {
-
-  var createSite = function(url, data) {
-       // Make .ajax request here
-  };
-
-  var addNewUrlToTable = function(url, httpResponse) {
-    // Actually add the url and response code to the table
-  };
-  return {
-    postSuccessHandler : function(response) {
-      // Call addNewUrlToTable and insert the results
-      addNewUrlToTable('','');
-
-    },
-
-    postFailureHandler : function(jqXHR) {
-      // The request failed.
-    },
-
-    onSubmitSiteClickHandler : function() {
-      var site = $('#siteInput').val();
-      
-      // We have the site, now call create site
-      // to make the request
-    },
-    createSite : createSite,
-    
-    addNewUrlToTable : addNewUrlToTable
-  };  
-})();
-
 $(window).load(function() {
   $("<label>New Site</label><br /><input type=\"text\" id=\"siteInput\"></input><button id=\"checkSite\">Check Site</button>").insertBefore("#siteTable");
 
@@ -56,3 +22,54 @@ $(window).load(function() {
   $('#checkSite').click(Callbacks.onSubmitSiteClickHandler);
 
 });
+
+var Callbacks = (function() {
+  
+    var createSite = function(url, data) {      
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            success: postSuccessHandler(),
+            failure: postFailureHandler()
+        });
+
+    };
+
+      
+    var addNewUrlToTable = function(url, httpResponse) {     // Actually add the url and response code to the table
+         
+        $("#siteTable").append("<td>url</td>", "<td>httpResponse</td>"); 
+    };
+
+      
+    var postSuccessHandler = function(response) {       // Call addNewUrlToTable and insert the results
+              
+        addNewUrlToTable('createSite', 'response');
+
+          
+    };
+
+      
+    var postFailureHandler   = function(jqXHR) {       // The request failed.
+          };
+
+      
+    var onSubmitSiteClickHandler =    function() {      
+        var site = $('#siteInput').val();             // We have the site, now call create site
+              
+        Callbacks.createSite(url, data); // to make the request
+          
+    };  
+    return {    
+        postSuccessHandler: postSuccessHandler,
+
+
+            postFailureHandler: postFailureHandler,
+
+            onSubmitSiteClickHandler: onSubmitSiteClickHandler,
+            createSite: createSite,
+
+            addNewUrlToTable: addNewUrlToTable  
+    };  
+})();
