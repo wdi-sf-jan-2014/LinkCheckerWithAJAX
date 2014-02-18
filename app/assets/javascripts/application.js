@@ -20,6 +20,16 @@ var Callbacks = (function() {
 
   var createSite = function(url, data) {
        // Make .ajax request here
+    var authParam = $('meta[name=csrf-param]').attr('content');
+    var authToken = $('meta[name=csrf-token]').attr('content');
+     // Adding the auth params and auth token to the data
+    data[authParam] = authToken;
+
+    $.ajax({
+      type: "post",
+      url: url,
+      data: data}).then(postSuccessHandler, postFailureHandler)
+  };
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
