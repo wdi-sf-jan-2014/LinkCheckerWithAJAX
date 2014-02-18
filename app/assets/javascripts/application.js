@@ -19,28 +19,44 @@
 var Callbacks = (function() {
 
   var createSite = function(url, data) {
+       // set authenticity 
+       var authParam = $('meta[name=csrf-param]').attr('content');
+       var authToken = $('meta[name=csrf-token]').attr('content');
+       //var data = {};
+       data.authParam = authToken;
        // Make .ajax request here
+       $.ajax({
+        type: "post",
+        url: url,
+        data: data
+       }).then(Callbacks.postSuccessHandler, Callbacks.postFailureHandler);
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
+    $('#siteTable > tbody:last').append('<tr>url</tr><tr>httpResponse</tr>');
   };
 
   var postSuccessHandler = function(response) {
+      var url = response.url;
+      var http_response = response.http_response;
       // Call addNewUrlToTable and insert the results
-      addNewUrlToTable('','');
+      Callbacks.addNewUrlToTable(url,http_response);
 
   };
 
   var postFailureHandler  = function(jqXHR) {
       // The request failed.
+      alert("HTTP Status Code = " + jqXHR.status);
   };
 
   var onSubmitSiteClickHandler =  function() {
-      var site = $('#siteInput').val();
-      
       // We have the site, now call create site
       // to make the request
+      // create object of site url and response
+      var userUrl = $('#siteInput').val();
+      var site_data = {site: {url: userUrl}};  // {url: url, data: data };
+        Callbacks.createSite('/sites.json', site_data);
   };
   return {
     postSuccessHandler : postSuccessHandler,
@@ -52,7 +68,7 @@ var Callbacks = (function() {
     createSite : createSite,
 
     addNewUrlToTable : addNewUrlToTable
-  };  
+  };
 })();
 
 $(window).load(function() {
