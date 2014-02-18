@@ -5,6 +5,7 @@ class SitesController < ApplicationController
 
   def index
     @sites = Site.all
+    @site = Site.new
     respond_to do |f|
       f.html
       f.json { render :json => @sites, only: [:id, :url, :http_response] }

@@ -19,31 +19,47 @@
 var Callbacks = (function() {
 
   var createSite = function(url, data) {
-       // Make .ajax request here
+      // Make .ajax request here
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: data
+      });
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
+    // $(#siteTable).append
   };
-  return {
-    postSuccessHandler : function(response) {
+
+  var postSuccessHandler = function(response) {
       // Call addNewUrlToTable and insert the results
-      addNewUrlToTable('','');
+      var jsonResp = JSON.parse(response);
+      var url = { url: jsonResp.url, httpResponse: jsonResp.http_response };
+      Callbacks.addNewUrlToTable(url);
 
-    },
+  };
 
-    postFailureHandler : function(jqXHR) {
+  var postFailureHandler  = function(jqXHR) {
       // The request failed.
-    },
+  };
 
-    onSubmitSiteClickHandler : function() {
+  var onSubmitSiteClickHandler =  function() {
       var site = $('#siteInput').val();
       
       // We have the site, now call create site
       // to make the request
-    },
+      Callbacks.createSite();
+  };
+  return {
+    postSuccessHandler : postSuccessHandler,
+
+
+    postFailureHandler : postFailureHandler,
+
+    onSubmitSiteClickHandler : onSubmitSiteClickHandler,
     createSite : createSite,
-    
+
     addNewUrlToTable : addNewUrlToTable
   };  
 })();
