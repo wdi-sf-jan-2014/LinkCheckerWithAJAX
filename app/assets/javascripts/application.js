@@ -17,8 +17,6 @@
 
 
 var Callbacks = (function() {
-var authParam = $('meta[name=csrf-param]').attr('content');
-var authToken = $('meta[name=csrf-token]').attr('content');
   var createSite = function(url, data) {
       // Make .ajax request here
     $.ajax({
@@ -47,10 +45,11 @@ var authToken = $('meta[name=csrf-token]').attr('content');
   };
 
   var onSubmitSiteClickHandler =  function() {
+      var authParam = $('meta[name=csrf-param]').attr('content');
+      var authToken = $('meta[name=csrf-token]').attr('content');
       var site = $('#siteInput').val();
-      var data = {};
+      var data = {url: site};
       data[authParam] = authToken;
-      data.url = site;
       Callbacks.createSite('/sites.json', data);
       // We have the site, now call create site
       // to make the request
