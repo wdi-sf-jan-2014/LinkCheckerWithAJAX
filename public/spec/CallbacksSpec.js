@@ -30,11 +30,11 @@ describe("Ajax LinkChecker suite", function() {
       var responseData = '{"url" : "http://www.myurl.com", "http_response" : 200}';
       Callbacks.postSuccessHandler(responseData);
 
-      jsonResp = JSON.parse(responseData);
-      expect(Callbacks.addNewUrlToTable).toHaveBeenCalledWith({
-        url: jsonResp.url,
-        httpResponse: jsonResp.http_response
-      });
+      jsonResp = responseData;
+      expect(Callbacks.addNewUrlToTable).toHaveBeenCalledWith(
+        jsonResp.url,
+        jsonResp.http_response
+      );
     });
   });
 

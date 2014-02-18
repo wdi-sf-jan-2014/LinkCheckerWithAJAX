@@ -15,7 +15,7 @@ class SitesController < ApplicationController
   def create
     url = params.require(:site)[:url]
     @site = Site.new(url: url)
-
+# raise params.inspect
     response = Typhoeus.get(@site.url)
 
     @site.http_response = response.response_code

@@ -24,19 +24,18 @@ var Callbacks = (function() {
         type: "POST",
         url: url,
         data: data
-      });
+      }).done(postSuccessHandler);
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
-    // $(#siteTable).append
-  };
+    $('#siteTable tbody').append("<tr><td><a href=>" + url + 
+      "</a></td><td>" + httpResponse + "</td></tr>");  };
 
   var postSuccessHandler = function(response) {
       // Call addNewUrlToTable and insert the results
-      var jsonResp = JSON.parse(response);
-      var url = { url: jsonResp.url, httpResponse: jsonResp.http_response };
-      Callbacks.addNewUrlToTable(url);
+      // var jsonResp = response;
+      Callbacks.addNewUrlToTable(response.url, response.http_response);
 
   };
 
@@ -46,10 +45,15 @@ var Callbacks = (function() {
 
   var onSubmitSiteClickHandler =  function() {
       var site = $('#siteInput').val();
-      
+      var authParam = $('meta[name=csrf-param]').attr('content');
+      var authToken = $('meta[name=csrf-token]').attr('content');
+      var data = {};
+      data[authParam] = authToken;
+      data.site = { url: site };
+      url = "/sites.json";
       // We have the site, now call create site
       // to make the request
-      Callbacks.createSite();
+      Callbacks.createSite(url, data);
   };
   return {
     postSuccessHandler : postSuccessHandler,
