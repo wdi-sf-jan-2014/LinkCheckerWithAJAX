@@ -23,27 +23,39 @@ var Callbacks = (function() {
         type: "POST",
         url: url,
         data: data,
-      });
+      }).done(postSuccessHandler).fail(postFailureHandler);
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
-    $("#siteTable").append("<tr><td><a href='" + url + "'>" + url + "</a></td><td>" + httpResponse + "</td></tr>");
+    var source = "<tr><td><a href={{u}}>{{u}}</a></td><td>{{hr}}</td></tr>";
+    var template = Handlebars.compile(source);
+
+    $("#siteTable").append(template({u: url, hr: httpResponse}));
   };
 
   var postSuccessHandler = function(response) {
       // Call addNewUrlToTable and insert the results
-      addNewUrlToTable(response.url,response.httpResponse);
+      Callbacks.addNewUrlToTable(response.url,response.http_response);
 
   };
 
   var postFailureHandler  = function(jqXHR) {
       // The request failed.
+      alert("EPIC FAIL, SON!");
   };
 
   var onSubmitSiteClickHandler =  function() {
       var site = $('#siteInput').val();
-      createSite("/sites", {url: site});
+
+      var authParam = $('meta[name=csrf-param]').attr('content');
+      var authToken = $('meta[name=csrf-token]').attr('content');
+
+      var data = {};
+      data[authParam] = authToken;
+      data.site = {url: site};
+
+      Callbacks.createSite("/sites.json", data);
       
       // We have the site, now call create site
       // to make the request
