@@ -15,35 +15,49 @@
 //= require turbolinks
 //= require_tree .
 
-
 var Callbacks = (function() {
 
   var createSite = function(url, data) {
-       // Make .ajax request here
+    var authParam = $('meta[name=csrf-param]').attr('content');
+    var authToken = $('meta[name=csrf-token]').attr('content');
+    data[authParam] = authToken;
+    // Make .ajax request here
+    $.ajax({type: "post", url: url, data: data})
+    .then(postSuccessHandler, postFailureHandler);
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
+    $('#siteTable').append("<td><a href=>" + url + "</a></td>");
+    $('#siteTable').append("<td>" + httpResponse + "</td><br>");
   };
+
+  var postSuccessHandler = function(response) {
+    // Call addNewUrlToTable and insert the results
+    Callbacks.addNewUrlToTable(response.url, response.http_response);
+    // alert ("Success: " + response);
+  };
+
+  var postFailureHandler  = function(jqXHR) {
+    // The request failed.
+    // alert ("Failure: " + jqXHR);
+  };
+
+  var onSubmitSiteClickHandler =  function() {
+    var site = $('#siteInput').val();
+    var data = {};
+    data.site = {url:site};
+    url = "/sites.json";
+    // We have the site, now call create site
+    // to make the request
+    Callbacks.createSite(site,data);
+  };
+
   return {
-    postSuccessHandler : function(response) {
-      // Call addNewUrlToTable and insert the results
-      addNewUrlToTable('','');
-
-    },
-
-    postFailureHandler : function(jqXHR) {
-      // The request failed.
-    },
-
-    onSubmitSiteClickHandler : function() {
-      var site = $('#siteInput').val();
-      
-      // We have the site, now call create site
-      // to make the request
-    },
+    postSuccessHandler : postSuccessHandler,
+    postFailureHandler : postFailureHandler,
+    onSubmitSiteClickHandler : onSubmitSiteClickHandler,
     createSite : createSite,
-    
     addNewUrlToTable : addNewUrlToTable
   };  
 })();
@@ -56,3 +70,5 @@ $(window).load(function() {
   $('#checkSite').click(Callbacks.onSubmitSiteClickHandler);
 
 });
+
+
