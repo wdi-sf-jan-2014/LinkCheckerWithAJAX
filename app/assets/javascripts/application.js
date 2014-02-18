@@ -19,16 +19,17 @@
 var Callbacks = (function() {
 
   var createSite = function(url, data) {
-       // Make .ajax request here
+       // set authenticity 
        var authParam = $('meta[name=csrf-param]').attr('content');
        var authToken = $('meta[name=csrf-token]').attr('content');
        //var data = {};
        data.authParam = authToken;
+       // Make .ajax request here
        $.ajax({
         type: "post",
         url: url,
         data: data
-       }).done(Callbacks.postSuccessHandler);
+       }).then(Callbacks.postSuccessHandler, Callbacks.postFailureHandler);
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
@@ -55,7 +56,7 @@ var Callbacks = (function() {
       // create object of site url and response
       var userUrl = $('#siteInput').val();
       var site_data = {site: {url: userUrl}};  // {url: url, data: data };
-        Callbacks.createSite('/sites', site_data);
+        Callbacks.createSite('/sites.json', site_data);
   };
   return {
     postSuccessHandler : postSuccessHandler,
