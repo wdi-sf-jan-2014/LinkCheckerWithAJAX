@@ -31,10 +31,7 @@ describe("Ajax LinkChecker suite", function() {
       Callbacks.postSuccessHandler(responseData);
 
       jsonResp = JSON.parse(responseData);
-      expect(Callbacks.addNewUrlToTable).toHaveBeenCalledWith(
-      jsonResp.url,
-      jsonResp.http_response
-      );
+      expect(Callbacks.addNewUrlToTable).toHaveBeenCalledWith(jsonResp.url, jsonResp.http_response);
     });
   });
 

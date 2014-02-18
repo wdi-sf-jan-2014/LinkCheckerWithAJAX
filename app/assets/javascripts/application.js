@@ -23,27 +23,23 @@ var Callbacks = (function() {
        var authParam = $('meta[name=csrf-param]').attr('content');
        var authToken = $('meta[name=csrf-token]').attr('content');
        data[authParam] = authToken;
-      $.ajax({url: url, type: 'POST', data:data}).done(postSuccessHandler);
+      $.ajax({url: url, type: 'POST', data:data}).then(postSuccessHandler,postFailureHandler);
       
   };
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
-    $("#siteTable tbody").append("<tr><td><a href="+url+">"+ url+ "</td><td> " + httpResponse + "</td></tr>");
+    $("#siteTable tbody").append("<tr><td><a href="+url+">"+ url+ "</a></td><td> " + httpResponse + "</td></tr>");
   };
 
   var postSuccessHandler = function(response) {
       // Call addNewUrlToTable and insert the results
-      Callbacks.addNewUrlToTable(
-        response.url, 
-        response.http_response
-      );
-     
-
+      Callbacks.addNewUrlToTable(response.url, response.http_response);
   };
 
   var postFailureHandler  = function(jqXHR) {
       // The request failed.
+      alert( "Data was not saved!");
   };
 
   var onSubmitSiteClickHandler =  function() {
