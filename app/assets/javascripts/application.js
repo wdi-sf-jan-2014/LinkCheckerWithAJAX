@@ -53,7 +53,7 @@ var Callbacks = (function() {
       var site = $('#siteInput').val();
       var authParam = $('meta[name=csrf-param]').attr('content');
       var authToken = $('meta[name=csrf-token]').attr('content');
-      data = {};
+      var data = {};
       data[authParam] = authToken;
       data.site = {url: site};
       url = "/sites.json";
