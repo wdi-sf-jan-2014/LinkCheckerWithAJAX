@@ -12,14 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require handlebars.runtime
+//= require_tree ./templates
 //= require turbolinks
 //= require_tree .
 
 
 var Callbacks = (function() {
-
-  
-  var createSite = function(url, data) {
+   
+var createSite = function(url, data) {
       // Make .ajax request here
 
     $.ajax({
@@ -31,9 +32,16 @@ var Callbacks = (function() {
 
   var addNewUrlToTable = function(url, httpResponse) {
     // Actually add the url and response code to the table
-      $("#siteTable > tbody").append("<tr><td><a href=" + url + ">" + url + "</a></td><td>" + httpResponse + "</td></tr>" );
+    // var source=  "<tr><td><a href= {{url}}</a></td><td>{{httpResponse}}</td></tr>";
+    // var template= Handlebars.compile(source);
+    // $("#siteTable > tbody").append(template({url: url, httpResponse: httpResponse}));
 
-  };
+    // $("#siteTable > tbody").append("<tr><td><a href=" + url + ">" + url + "</a></td><td>" + httpResponse + "</td></tr>" );
+    var ctx = {url: url, httpResponse: httpResponse};
+    $('#siteTable').append(HandlebarsTemplates.site(ctx));
+    //Below is code that will make the url search bar blank after search is done
+    var site = $("#siteInput").val(""); 
+  };
 
   var postSuccessHandler = function(response) {
       // Call addNewUrlToTable and insert the results

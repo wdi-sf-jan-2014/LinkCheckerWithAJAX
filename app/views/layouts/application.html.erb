@@ -7,7 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<script>
+var source = $("#inline-template").html();
 
+var inline_string_template = Handlebars.compile("<p>This is my template,{{url}}</p>");
+$("#url").html(inline_string_template(url));
+
+</script>
 <%= yield %>
 
 </body>
