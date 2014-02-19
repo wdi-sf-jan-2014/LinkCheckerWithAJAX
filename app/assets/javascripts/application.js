@@ -12,10 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+
 //= require turbolinks
 //= require_tree .
-//= require handlebars.runtime
-//= require_tree ./templates
+
+
+
+
 
 
 var Callbacks = (function() {
@@ -27,12 +30,18 @@ var Callbacks = (function() {
   url: urlFromCaller,
   data: data}).then(postSuccessHandler, postFailureHandler);
 
-  };
+  }; 
 
   var addNewUrlToTable = function(url, httpResponse) {
-
-    // Actually add the url and response code to the table
-  };
+      // Handlebars.compile is a js function which takes a template as a string and returns it as a template function
+      var inline_string_template = Handlebars.compile("<tr><td><a href={{url}}>{{url}}</a></td><td>{{httpResponse}}</td></tr>");
+      var context = {url: url, httpResponse: httpResponse};
+      var html = inline_string_template(context);
+      $("#siteTable > tbody").append(html);
+      // $("#siteTable > tbody").append(HandlebarsTemplates(site(context));
+      var site = $("#siteInput").val("");
+      // $("#siteTable > tbody").append("<tr><td><a href=" + url + ">" + url + "</a></td><td>" + httpResponse + "</td></tr>" );
+      };
 
   var postSuccessHandler = function(response) {
       // Call addNewUrlToTable and insert the results
@@ -41,7 +50,7 @@ var Callbacks = (function() {
   };
 
   var postFailureHandler  = function(jqXHR) {
-      // The request failed.
+   
   };
 
   var onSubmitSiteClickHandler =  function() {
