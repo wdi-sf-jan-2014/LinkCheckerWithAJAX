@@ -12,29 +12,32 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require handlebars.runtime
+//= require_tree ./templates
 //= require turbolinks
 //= require_tree .
 
 
+
 var Callbacks = (function() {
 
- var createSite = function(url, data) {
-      // Make .ajax request here
+ var createSite = function(user_url, data) {
+      // Make .ajax request here -- doing http request
         var authParam = $('meta[name=csrf-param]').attr('content');
         var authToken = $('meta[name=csrf-token]').attr('content');
         data[authParam]= authToken;
         $.ajax({
           type: "POST",
-          url: url,
+          url: user_url,
           data: data}).then(postSuccessHandler, postFailureHandler);
   };
 
 var addNewUrlToTable = function(url, httpResponse) {
-   var source = "<tr> <td><a href={{url}} >{{url}}</a></td> <td> {{httpResponse}} </td> </tr>";
+   // var source = "<tr> <td><a href={{url}} >{{url}}</a></td> <td> {{httpResponse}} </td> </tr>";
    // handlebars.compile is a js function which takes a template as a string and returns it as a template function
-   var template = Handlebars.compile(source);
+   // var template = Handlebars.compile(source);
    var data = {url: url, httpResponse: httpResponse};
-   $('#siteTable').append(template(data));
+   $('#siteTable').append(HandlebarsTemplates.sites(data));
    $("#siteInput").val("");
  };
 
@@ -50,10 +53,13 @@ var addNewUrlToTable = function(url, httpResponse) {
  };
 
  var onSubmitSiteClickHandler =  function() {
+     // grabs value from input field
      var site = $('#siteInput').val();
 
+     // give me attribute of meta content
      var authParam = $('meta[name=csrf-param]').attr('content');
      var authToken = $('meta[name=csrf-token]').attr('content');
+
 
      var data = {};
      data[authParam] = authToken;
@@ -64,15 +70,11 @@ var addNewUrlToTable = function(url, httpResponse) {
      // to make the request
  };
  return {
-   postSuccessHandler : postSuccessHandler,
-
-
-   postFailureHandler : postFailureHandler,
-
-   onSubmitSiteClickHandler : onSubmitSiteClickHandler,
-   createSite : createSite,
-
-   addNewUrlToTable : addNewUrlToTable
+  postSuccessHandler: postSuccessHandler,
+  postFailureHandler: postFailureHandler,
+  onSubmitSiteClickHandler: onSubmitSiteClickHandler,
+  createSite: createSite,
+  addNewUrlToTable: addNewUrlToTable
  };  
 })();
 
